@@ -4,6 +4,8 @@
     Layout = null;
 }
 
+@using FactoringSurvey.Models;
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +21,6 @@
                 <tr>
                     <th>Name</th>
                     <th>Country</th>
-                    <th>Favorite Pet</th>
                     <th>Age</th>
                     <th>Gender</th>
                 </tr>
@@ -30,9 +31,8 @@
                     <tr>
                         <td>@r.Name</td>
                         <td>@r.Country</td>
-                        <td>@r.FavoritePet</td>
-                        <td>@r.Age</td>
-                        <td>@r.Gender</td>
+                        <td>@EnumOptions.Ages.GetDescription(@r.Age)</td>
+                        <td>@EnumOptions.Genders.GetDescription(@r.Gender)</td>
                     </tr>
 
                 }

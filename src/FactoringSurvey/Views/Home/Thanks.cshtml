@@ -4,6 +4,8 @@
     Layout = null;
 }
 
+@using FactoringSurvey.Models;
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,19 +17,17 @@
 
     <p>
         <h3>Thank you, @Model.Name!</h3>
-        @if (Model.Gender == FactoringSurvey.Models.Gender.Female)
+        @if (Model.Gender == EnumOptions.GenderFemale)
         {
-            @:You are a really smart lady!
+            @:Really smart, Madam!
         }
-        else if (Model.Gender == FactoringSurvey.Models.Gender.Male)
+        else if (Model.Gender == EnumOptions.GenderMale)
         {
             @:Way to go dude!
-
         }
         else
         {
-            @:Whatever! Have fun with your @Model.FavoritePet!
-
+            @:Whatever! Have fun in @Model.Country!
         }
     </p>
 

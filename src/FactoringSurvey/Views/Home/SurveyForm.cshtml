@@ -1,0 +1,83 @@
+﻿@model FactoringSurvey.Models.SurveyResponse
+
+@{
+    Layout = null;
+}
+
+@using FactoringSurvey.Models;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Survey Form</title>
+    <link rel="stylesheet" href="~/css/styles.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body>
+    <div class="panel panel-success">
+        <div class="panel-heading text-center">
+            <h4>Trinomials Factoring Teaching Survey</h4>
+        </div>
+        <div class="panel-body">
+            <form class="p-a-1" asp-action="SurveyForm" method="post">
+                <div asp-validation-summary="All"></div>
+
+                <div class="form-group">
+                    <label asp-for="FavoritePet">Your favorite pet animal:</label>
+                    <input class="form-control" asp-for="FavoritePet" placeholder="Favorite pet" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Name">Your name:</label>
+                    <input class="form-control" asp-for="Name" placeholder="Your name" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Country">Your country:</label>
+                    <input class="form-control" asp-for="Country" placeholder="Favorite country" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Age">Your age:</label>
+                    <label class="radio-inline"><input asp-for="Age" type="radio" name="age" value="@Age.Unspecified" checked>Unspecified</label>
+                    <label class="radio-inline"><input asp-for="Age" type="radio" name="age" value="@Age.Twenties">20-29</label>
+                    <label class="radio-inline"><input asp-for="Age" type="radio" name="age" value="@Age.Thirties">30-39</label>
+                    <label class="radio-inline"><input asp-for="Age" type="radio" name="age" value="@Age.Fourties">40-49</label>
+                    <label class="radio-inline"><input asp-for="Age" type="radio" name="age" value="@Age.Fifties">50-59</label>
+                    <label class="radio-inline"><input asp-for="Age" type="radio" name="age" value="@Age.SixtyPlus">60+</label>
+                </div>
+
+                <div class="form-group">
+                    <label>Your gender:</label>
+                    <label class="radio-inline"><input asp-for="Gender" type="radio" name="gender" value="@Gender.Unspecified" checked>Unspecified</label>
+                    <label class="radio-inline"><input asp-for="Gender" type="radio" name="gender" value="@Gender.Female">Female</label>
+                    <label class="radio-inline"><input asp-for="Gender" type="radio" name="gender" value="@Gender.Male">Male</label>
+                </div>
+
+                        <!--
+
+            <select class="form-control" asp-for="Gender">
+                <option value="">Choose an option</option>
+                <option value="true">Yes, I do a lot</option>
+                <option value="false">Not really</option>
+            </select>
+            -->
+
+                    <div class="form-group">
+                        <label asp-for="Comment">Your comments:</label>
+                        <textarea class="form-control" rows="3" asp-for="Comment" placeholder="Max 240 characters"></textarea>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn btn-primary" type="submit">
+                            Submit Your Survey
+                        </button>
+                    </div>
+
+</form>
+        </div>
+    </div>
+
+</body>
+</html>

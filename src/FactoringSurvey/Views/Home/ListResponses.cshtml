@@ -1,0 +1,46 @@
+﻿@model IEnumerable<FactoringSurvey.Models.SurveyResponse>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Survey Responses</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body>
+    <div class="panel-body">
+        <h3>Trinomials Factoring Teaching Survey</h3>
+        <table class="table table-sm table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Country</th>
+                    <th>Favorite Pet</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var r in Model)
+                {
+                    <tr>
+                        <td>@r.Name</td>
+                        <td>@r.Country</td>
+                        <td>@r.FavoritePet</td>
+                        <td>@r.Age</td>
+                        <td>@r.Gender</td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+
+        <a asp-action="SurveyForm">Back to Survey Form</a>
+    </div>
+</body>
+</html>
+

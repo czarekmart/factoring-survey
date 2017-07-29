@@ -1,0 +1,39 @@
+﻿@model FactoringSurvey.Models.SurveyResponse
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Thanks</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body class="text-center">
+
+    <p>
+        <h3>Thank you, @Model.Name!</h3>
+        @if (Model.Gender == FactoringSurvey.Models.Gender.Female)
+        {
+            @:You are a really smart lady!
+        }
+        else if (Model.Gender == FactoringSurvey.Models.Gender.Male)
+        {
+            @:Way to go dude!
+
+        }
+        else
+        {
+            @:Whatever! Have fun with your @Model.FavoritePet!
+
+        }
+    </p>
+
+    <p>
+        Click <a class="navbar-link" asp-action="SurveyForm">here</a> to return to survey.
+    </p>
+
+</body>
+</html>

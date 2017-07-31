@@ -6,6 +6,51 @@
 
 @using FactoringSurvey.Models;
 
+
+@{
+    var gradeCaption = new Func<int, string>((gradeIndex) =>
+    {
+        switch (gradeIndex)
+        {
+            case 0:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+            case 11:
+            case 12:
+                return string.Format("{0}<sup>th</sup>", gradeIndex);
+            case 1:
+                return "1<sup>st</sup>";
+            case 2:
+                return "2<sup>nd</sup>";
+            case 3:
+                return "3<sup>rd</sup>";
+            case 13:
+                return "College";
+            default:
+                return gradeIndex.ToString();
+
+        }
+    });
+
+    var gradeCheckboxes = new Func<string, string>((aspFor) =>
+    {
+        var htmlOutput = string.Empty;
+        for (var grade = 6; grade < SurveyResponse.GradeCount; grade++)
+        {
+            htmlOutput += string.Format(
+                "<div class=\"checkbox-inline\"><label><input type=\"checkbox\" asp-for=\"{0}[{1}}]\" >gradeCaption({1})</label></div>",
+                aspFor, grade);
+        }
+        return htmlOutput;
+    });
+
+}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,12 +60,19 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
 </head>
 <body>
-    <div class="panel panel-success">
+    <div class="panel panel-info">
         <div class="panel-heading text-center">
             <h4>Trinomials Factoring Teaching Survey</h4>
         </div>
-        <div class="panel-body">
-            <form class="p-a-1" asp-action="SurveyForm" method="post">
+    </div>
+
+    <form class="p-a-1" asp-action="SurveyForm" method="post">
+
+        <div class="panel panel-primary container">
+            <div class="panel-heading text-left">
+                Your Background
+            </div>
+            <div class="panel-body">
                 <div asp-validation-summary="All"></div>
 
                 <div class="form-group">
@@ -44,8 +96,8 @@
                     {
                         bool checkedAttr = opt.Value == EnumOptions.Unspecified;
                         <label class="radio-inline">
-                            <input asp-for="Gender" type="radio" name="gender" value="@opt.Value" checked="@checkedAttr" >@opt.Description</label>
-                    }
+                            <input asp-for="Gender" type="radio" name="gender" value="@opt.Value" checked="@checkedAttr">@opt.Description
+                        </label>}
                 </div>
 
                 <div class="form-group">
@@ -54,8 +106,8 @@
                     {
                         bool checkedAttr = opt.Value == EnumOptions.Unspecified;
                         <label class="radio-inline">
-                        <input asp-for="Age" type="radio" name="age" value="@opt.Value" checked="@checkedAttr" >@opt.Description</label>
-                    }
+                            <input asp-for="Age" type="radio" name="age" value="@opt.Value" checked="@checkedAttr">@opt.Description
+                        </label>}
                 </div>
 
                 <div class="form-group">
@@ -74,19 +126,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label>What grade have you taught mathematics:</label>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="TeachingGrade6" value="false">6<sup>th</sup></label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="TeachingGrade7" value="false">7<sup>th</sup></label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="TeachingGrade8" value="false">8<sup>th</sup></label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="TeachingGrade9" value="false">9<sup>th</sup></label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="TeachingGrade10" value="false">10<sup>th</sup></label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="TeachingGrade11" value="false">11<sup>th</sup></label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="TeachingGrade12" value="false">12<sup>th</sup></label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="TeachingGradeCollege" value="false">College</label></div>
+                    <label>What grade have you taught mathematics (check all that apply):</label>
+                    @for (var grade = 6; grade < SurveyResponse.GradeCount; grade++)
+                    {
+                        <label class="checkbox-inline"><input type="checkbox" asp-for="TaughtGrade[grade]">@Html.Raw(gradeCaption(grade))</label>}
                 </div>
 
                 <div class="form-group">
-                    <label>What course(s) are you currently teaching:</label>
+                    <label>What course(s) are you currently teaching (check all that apply):</label>
                     <div class="checkbox"><label><input type="checkbox" asp-for="TeachingCourseBasic" value="false">Basic Math</label></div>
                     <div class="checkbox"><label><input type="checkbox" asp-for="TeachingCoursePreAlgebra" value="false">Pre-Algebra</label></div>
                     <div class="checkbox"><label><input type="checkbox" asp-for="TeachingCourseAlgebra1" value="false">Algebra 1</label></div>
@@ -95,23 +142,157 @@
                     <div class="checkbox"><label><input type="checkbox" asp-for="TeachingCoursePreCalculus" value="false">Pre-Calculus</label></div>
                     <div class="checkbox"><label><input type="checkbox" asp-for="TeachingCourseCalculus" value="false">Calculus</label></div>
                     <div class="checkbox"><label><input type="checkbox" asp-for="TeachingCourseProbability" value="false">Probability and Statistics</label></div>
+                    <label asp-for="CourseOther">Other:</label>
+                    <input class="form-control" asp-for="CourseOther" placeholder="Other course(s)" />
                 </div>
+            </div>
+        </div>
 
+        <div class="panel panel-primary container">
+            <div class="panel-heading text-left">
+                How many years have you taught trinomials?
+            </div>
+            <div class="panel-body">
+
+                <!-- Question 11 -->
+                <div class="form-group">
+                    <label asp-for="TaughtFactoringInAlgebra1Years">Algebra 1:</label>
+                    <input class="form-control" type="text" asp-for="TaughtFactoringInAlgebra1Years" placeholder="Number of years" />
+                    <label>Specify grades:</label>
+                    @for (var grade = 6; grade < SurveyResponse.GradeCount; grade++)
+                    {
+                        <label class="checkbox-inline"><input type="checkbox" asp-for="TaughtFactoringInAlgebra1Grades[grade]">@Html.Raw(gradeCaption(grade))</label>}
+                </div>
 
                 <div class="form-group">
-                    <label asp-for="Comment">Your comments:</label>
-                    <textarea class="form-control" rows="3" asp-for="Comment" placeholder="Max 240 characters"></textarea>
+                    <label asp-for="TaughtFactoringInAlgebra2Years">Algebra 2:</label>
+                    <input class="form-control" type="text" asp-for="TaughtFactoringInAlgebra2Years" placeholder="Number of years" />
+                    <label>Specify grades:</label>
+                    @for (var grade = 6; grade < SurveyResponse.GradeCount; grade++)
+                    {
+                        <label class="checkbox-inline"><input type="checkbox" asp-for="TaughtFactoringInAlgebra2Grades[grade]">@Html.Raw(gradeCaption(grade))</label>}
                 </div>
 
-                <div class="text-center">
-                    <button class="btn btn-primary" type="submit">
-                        Submit Your Survey
-                    </button>
+                <div class="form-group">
+                    <label asp-for="TaughtFactoringInPrecalculusYears">PreCalculus:</label>
+                    <input class="form-control" type="text" asp-for="TaughtFactoringInPrecalculusYears" placeholder="Number of years" />
+                    <label>Specify grades:</label>
+                    @for (var grade = 6; grade < SurveyResponse.GradeCount; grade++)
+                    {
+                        <label class="checkbox-inline"><input type="checkbox" asp-for="TaughtFactoringInPrecalculusGrades[grade]">@Html.Raw(gradeCaption(grade))</label>}
                 </div>
 
-</form>
+                <div class="form-group">
+                    <label asp-for="TaughtFactoringInCalculusYears">Calculus:</label>
+                    <input class="form-control" type="text" asp-for="TaughtFactoringInCalculusYears" placeholder="Number of years" />
+                    <label>Specify grades:</label>
+                    @for (var grade = 6; grade < SurveyResponse.GradeCount; grade++)
+                    {
+                        <label class="checkbox-inline"><input type="checkbox" asp-for="TaughtFactoringInCalculusGrades[grade]">@Html.Raw(gradeCaption(grade))</label>}
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="TaughtFactoringInOtherSpecified">Other:</label>
+                    <input class="form-control" type="text" asp-for="TaughtFactoringInOtherSpecified" placeholder="Other course name" />
+                    <input class="form-control" type="text" asp-for="TaughtFactoringInOtherYears" placeholder="Number of years" />
+                    <label>Specify grades:</label>
+                    @for (var grade = 6; grade < SurveyResponse.GradeCount; grade++)
+                    {
+                        <label class="checkbox-inline"><input type="checkbox" asp-for="TaughtFactoringInOtherGrades[grade]">@Html.Raw(gradeCaption(grade))</label>}
+                </div>
+            </div>
         </div>
-    </div>
+
+        <div class="panel panel-primary container">
+            <div class="panel-heading text-left">
+                In this school year, what math courses require you to teach factoring trinomials?
+            </div>
+            <div class="panel-body">
+
+
+                <!-- Question 12 -->
+
+                <div class="form-group">
+                    <label>Algebra 1:</label>
+                    @for (var grade = 6; grade < SurveyResponse.GradeCount; grade++)
+                    {
+                        <label class="checkbox-inline"><input type="checkbox" asp-for="TeachingNowInAlgebra1Grades[grade]">@Html.Raw(gradeCaption(grade))</label>
+                    }
+                </div>
+
+                <div class="form-group">
+                    <label>Algebra 2:</label>
+                    @for (var grade = 6; grade < SurveyResponse.GradeCount; grade++)
+                    {
+                        <label class="checkbox-inline"><input type="checkbox" asp-for="TeachingNowInAlgebra2Grades[grade]">@Html.Raw(gradeCaption(grade))</label>
+                    }
+                </div>
+
+                <div class="form-group">
+                    <label>Pre-Calculus:</label>
+                    @for (var grade = 6; grade < SurveyResponse.GradeCount; grade++)
+                    {
+                        <label class="checkbox-inline"><input type="checkbox" asp-for="TeachingNowInPrecalculusGrades[grade]">@Html.Raw(gradeCaption(grade))</label>
+                    }
+                </div>
+
+                <div class="form-group">
+                    <label>Calculus:</label>
+                    @for (var grade = 6; grade < SurveyResponse.GradeCount; grade++)
+                    {
+                        <label class="checkbox-inline"><input type="checkbox" asp-for="TeachingNowInCalculusGrades[grade]">@Html.Raw(gradeCaption(grade))</label>
+                    }
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="TeachingNowInOtherSpecified">Other:</label>
+                    <input class="form-control" type="text" asp-for="TeachingNowInOtherSpecified" placeholder="Other course name" />
+                    @for (var grade = 6; grade < SurveyResponse.GradeCount; grade++)
+                    {
+                        <label class="checkbox-inline"><input type="checkbox" asp-for="TeachingNowInOtherGrades[grade]">@Html.Raw(gradeCaption(grade))</label>
+                    }
+                </div>
+
+
+                @*<div class="form-group">
+                        <label asp-for="Comment">Your comments:</label>
+                        <textarea class="form-control" rows="3" asp-for="Comment" placeholder="Max 240 characters"></textarea>
+                    </div>*@
+
+
+            </div>
+        </div>
+
+        <!-- Question 13 -->
+        <div class="panel panel-primary container">
+            <div class="panel-heading text-left">
+                What methods of factoring do you introduce to your students?
+            </div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                    <label>Check all that apply:</label>
+                    <div class="checkbox"><label><input type="checkbox" asp-for="FactoringMethodDiff2Squares" value="false">Difference of two squares</label></div>
+                    <div class="checkbox"><label><input type="checkbox" asp-for="FactoringMethodQuadraticFormula" value="false">Quadratic formula</label></div>
+                    <div class="checkbox"><label><input type="checkbox" asp-for="FactoringMethodGuessAndCheck" value="false">"Guess and check"</label></div>
+                    <div class="checkbox"><label><input type="checkbox" asp-for="FactoringMethodCompletingSquare" value="false">Completing the square</label></div>
+                    <div class="checkbox"><label><input type="checkbox" asp-for="FactoringMethodSquareOfBinomial" value="false">Square of binomial</label></div>
+                    <div class="checkbox"><label><input type="checkbox" asp-for="FactoringMethodGrouping" value="false">"Grouping"</label></div>
+                    <div class="checkbox"><label><input type="checkbox" asp-for="FactoringMethodCommonFactor" value="false">Greatest Common Factor of Monomials</label></div>
+                    <div class="checkbox"><label><input type="checkbox" asp-for="FactoringMethodOther" value="false">Other</label></div>
+                    <input class="form-control" asp-for="FactoringMethodOtherSpecified" placeholder="Other method(s)" />
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="text-center">
+            <button class="btn btn-primary" type="submit">
+                Submit Your Survey
+            </button>
+        </div>
+    </form>
 
 </body>
 </html>

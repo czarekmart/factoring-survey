@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace FactoringSurvey.Models
 {
 	public class SurveyResponse
@@ -113,12 +114,10 @@ namespace FactoringSurvey.Models
 		public string WhatIsSuccessfulTeaching				{ get; set; }
 
 		// Question 18
-		public int TeachingSatisfaction						{ get; set; }
+		public int TeachingSuccess							{ get; set; }
 
 
 		// Part 3
-
-		public int RoleOfTechnology							{ get; set; }
 
 		// Question 19
 		public int ConfidentWithTechnology					{ get; set; }
@@ -129,27 +128,25 @@ namespace FactoringSurvey.Models
 		public string CanTechnologyBeEffectiveComment		{ get; set; }
 
 		// Question 21
-		public int HaveAccessToTechnology					{ get; set; }
-		public int HaveAccessToGraphingCalculator			{ get; set; }
-		public int HaveAccessToBlackboard					{ get; set; }
-		public int HaveAccessToIpad							{ get; set; }
-		public int HaveAccessToGames						{ get; set; }
-		public int HaveAccessToSmartBoards					{ get; set; }
-		public int HaveAccessToPresentationSoftware			{ get; set; }
-		public int HaveAccessToCloudSharing					{ get; set; }
-		public int HaveAccessToComputerizedTesting			{ get; set; }
-		public int HaveAccessToSocialMedia					{ get; set; }
-		public int HaveAccessToMultimediaProjector			{ get; set; }
-		public int HaveAccessToClassroomResponseSystem		{ get; set; }
-		public int HaveAccessToCAI							{ get; set; }
-		public int HaveAccessToOnlineProjects				{ get; set; }
-		public int HaveAccessToInformationVisualization		{ get; set; }
-		public int HaveAccessToOther						{ get; set; }
-		[MaxLength(MaxCommentLength)]
-		public string HaveAccessToOtherSpecified			{ get; set; }
+		public int AccessToGraphingCalculator				{ get; set; }
+		public int AccessToBlackboard						{ get; set; }
+		public int AccessToIpad								{ get; set; }
+		public int AccessToGames							{ get; set; }
+		public int AccessToSmartBoards						{ get; set; }
+		public int AccessToPresentationSoftware				{ get; set; }
+		public int AccessToCloudSharing						{ get; set; }
+		public int AccessToComputerizedTesting				{ get; set; }
+		public int AccessToSocialMedia						{ get; set; }
+		public int AccessToMultimediaProjector				{ get; set; }
+		public int AccessToClassroomResponseSystem			{ get; set; }
+		public int AccessToCAI								{ get; set; }
+		public int AccessToOnlineProjects					{ get; set; }
+		public int AccessToInformationVisualization			{ get; set; }
+		public int AccessToOther							{ get; set; }
+		[MaxLength(120)]
+		public string AccessToOtherSpecified				{ get; set; }
 
 		// Question 22
-		public int IncorporateTechnology					{ get; set; }
 		public int IncorporateGraphingCalculator			{ get; set; }
 		public int IncorporateBlackboard					{ get; set; }
 		public int IncorporateIpad							{ get; set; }
@@ -165,35 +162,35 @@ namespace FactoringSurvey.Models
 		public int IncorporateOnlineProjects				{ get; set; }
 		public int IncorporateInformationVisualization		{ get; set; }
 		public int IncorporateOther							{ get; set; }
-		[MaxLength(MaxCommentLength)]
-		public string IncorporateSpecified					{ get; set; }
+		[MaxLength(120)]
+		public string IncorporateOtherSpecified				{ get; set; }
 
 		// Question 23
-		public int UseTechnologyToDifferenceOfSquares		{ get; set; }
-		public int UseTechnologyToQuadraticFormula			{ get; set; }
-		public int UseTechnologyToGuessAndCheck				{ get; set; }
-		public int UseTechnologyToCompleteSquare			{ get; set; }
-		public int UseTechnologyToSquareOfBinomial			{ get; set; }
-		public int UseTechnologyToGrouping					{ get; set; }
-		public int UseTechnologyToCommonFactor				{ get; set; }
-		public int UseTechnologyToOther						{ get; set; }
-		[MaxLength(MaxCommentLength)]
-		public string UseTechnologyToOtherSpecified			{ get; set; }
+		public int UseToDifferenceOfSquares					{ get; set; }
+		public int UseToQuadraticFormula					{ get; set; }
+		public int UseToGuessAndCheck						{ get; set; }
+		public int UseToCompleteSquare						{ get; set; }
+		public int UseToSquareOfBinomial					{ get; set; }
+		public int UseToGrouping							{ get; set; }
+		public int UseToCommonFactor						{ get; set; }
+		public int UseToOther								{ get; set; }
+		[MaxLength(120)]
+		public string UseToOtherSpecified					{ get; set; }
 
 		// Question 24
-		public int GoalTechnologyToComplyToPrincipal		{ get; set; }
-		public int GoalTechnologyToPresentProblems			{ get; set; }
-		public int GoalTechnologyToComputations				{ get; set; }
-		public int GoalTechnologyToGraph					{ get; set; }
-		public int GoalTechnologyToCheckAnswers				{ get; set; }
-		public int GoalTechnologyToStudentKnowledge			{ get; set; }
-		public int GoalTechnologyToCommunicate				{ get; set; }
-		public int GoalTechnologyToEngageStudents			{ get; set; }
-		public int GoalTechnologyToIndividualizeLearning	{ get; set; }
-		public int GoalTechnologyToDifferentReprentations	{ get; set; }
-		public int GoalTechnologyToTechTechnology			{ get; set; }
-		public int GoalTechnologyToOther					{ get; set; }
-		[MaxLength(MaxCommentLength)]
-		public string GoalTechnologyToOtherSpecified		{ get; set; }
+		public int GoalToComplyToPrincipal					{ get; set; }
+		public int GoalToPresentProblems					{ get; set; }
+		public int GoalToComputations						{ get; set; }
+		public int GoalToGraph								{ get; set; }
+		public int GoalToCheckAnswers						{ get; set; }
+		public int GoalToStudentKnowledge					{ get; set; }
+		public int GoalToCommunicate						{ get; set; }
+		public int GoalToEngageStudents						{ get; set; }
+		public int GoalToIndividualizeLearning				{ get; set; }
+		public int GoalToDifferentReprentations				{ get; set; }
+		public int GoalToTeachTechnology					{ get; set; }
+		public int GoalToOther								{ get; set; }
+		[MaxLength(120)]
+		public string GoalToOtherSpecified					{ get; set; }
 	}
 }

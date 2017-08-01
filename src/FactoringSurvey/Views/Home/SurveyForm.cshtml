@@ -37,16 +37,32 @@
         }
     });
 
-    var gradeCheckboxes = new Func<string, string>((aspFor) =>
+    var agreeScaleCaption = new Func<int, string>((scale)=>
     {
-        var htmlOutput = string.Empty;
-        for (var grade = 6; grade < SurveyResponse.GradeCount; grade++)
+        switch(scale)
         {
-            htmlOutput += string.Format(
-                "<div class=\"checkbox-inline\"><label><input type=\"checkbox\" asp-for=\"{0}[{1}}]\" >gradeCaption({1})</label></div>",
-                aspFor, grade);
+            case 5: return "Strongly Agree";
+            case 4: return "Agree";
+            case 3: return "Neutral";
+            case 2: return "Disagree";
+            case 1: return "Strongly Disagree";
+            default: return "Neutral";
+
         }
-        return htmlOutput;
+    });
+
+    var alwaysScaleCaption = new Func<int, string>((scale) =>
+    {
+        switch (scale)
+        {
+            case 5: return "Always";
+            case 4: return "Usually";
+            case 3: return "About Half the Time";
+            case 2: return "Rarely";
+            case 1: return "Never";
+            default: return "Always";
+
+        }
     });
 
 }
@@ -97,7 +113,8 @@
                         bool checkedAttr = opt.Value == EnumOptions.Unspecified;
                         <label class="radio-inline">
                             <input asp-for="Gender" type="radio" name="gender" value="@opt.Value" checked="@checkedAttr">@opt.Description
-                        </label>}
+                        </label>
+                    }
                 </div>
 
                 <div class="form-group">
@@ -274,10 +291,10 @@
                     <label>Check all that apply:</label>
                     <div class="checkbox"><label><input type="checkbox" asp-for="FactoringMethodDiff2Squares" value="false">Difference of two squares</label></div>
                     <div class="checkbox"><label><input type="checkbox" asp-for="FactoringMethodQuadraticFormula" value="false">Quadratic formula</label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="FactoringMethodGuessAndCheck" value="false">"Guess and check"</label></div>
+                    <div class="checkbox"><label><input type="checkbox" asp-for="FactoringMethodGuessAndCheck" value="false">Guess and check</label></div>
                     <div class="checkbox"><label><input type="checkbox" asp-for="FactoringMethodCompletingSquare" value="false">Completing the square</label></div>
                     <div class="checkbox"><label><input type="checkbox" asp-for="FactoringMethodSquareOfBinomial" value="false">Square of binomial</label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="FactoringMethodGrouping" value="false">"Grouping"</label></div>
+                    <div class="checkbox"><label><input type="checkbox" asp-for="FactoringMethodGrouping" value="false">Grouping</label></div>
                     <div class="checkbox"><label><input type="checkbox" asp-for="FactoringMethodCommonFactor" value="false">Greatest Common Factor of Monomials</label></div>
                     <div class="checkbox"><label><input type="checkbox" asp-for="FactoringMethodOther" value="false">Other</label></div>
                     <input class="form-control" asp-for="FactoringMethodOtherSpecified" placeholder="Other method(s)" />
@@ -285,6 +302,391 @@
 
             </div>
         </div>
+
+        <!-- Question 14-18 -->
+        <div class="panel panel-primary container">
+            <div class="panel-heading text-left">
+                Successful teaching
+            </div>
+            <div class="panel-body">
+
+                <!-- question 14-->
+                <div class="form-group">
+                    <label asp-for="MostChallengingPart">What do you think is the most challenging part of factoring trinomials for students to understand:</label>
+                    <textarea class="form-control" rows="2" asp-for="MostChallengingPart" placeholder="Max 240 characters"></textarea>
+                </div>
+                <!-- question 15-->
+                <div class="form-group">
+                    <label asp-for="WhatToAddToCurriculum">What would you ADD to curriculum to make students more successful in factoring trinomials:</label>
+                    <textarea class="form-control" rows="2" asp-for="WhatToAddToCurriculum" placeholder="Max 240 characters"></textarea>
+                </div>
+                <!-- question 16-->
+                <div class="form-group">
+                    <label asp-for="WhatToSubractFromCurriculum">What would you SUBTRACT from curriculum to make students more successful in mathematics:</label>
+                    <textarea class="form-control" rows="2" asp-for="WhatToSubractFromCurriculum" placeholder="Max 240 characters"></textarea>
+                </div>
+                <!-- question 17-->
+                <div class="form-group">
+                    <label asp-for="WhatIsSuccessfulTeaching">How do you define "successful" teaching:</label>
+                    <textarea class="form-control" rows="2" asp-for="WhatIsSuccessfulTeaching" placeholder="Max 240 characters"></textarea>
+                </div>
+                <!-- question 18-->
+                <div class="form-group">
+                    <label asp-for="TeachingSuccess">Are you successful as a teacher in teching factorial trinomials:</label>
+                    @for (var scale = 5; scale >= 1; scale--)
+                    {
+                        <label class="radio-inline">
+                            <input asp-for="TeachingSuccess" type="radio" name="TeachingSuccess" value="@scale" checked="@(scale == 3)">@agreeScaleCaption(scale)
+                        </label>
+                    }
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Question 19-20 -->
+        <div class="panel panel-primary container">
+            <div class="panel-heading text-left">
+                Confidence in technology
+            </div>
+            <div class="panel-body">
+
+                <!-- Question 19 -->
+                <div class="form-group">
+                    <label asp-for="ConfidentWithTechnology">I am familiar and confident with using technology in my classroom:</label>
+                    @for (var scale = 5; scale >= 1; scale--)
+                    {
+                        <label class="radio-inline">
+                            <input asp-for="ConfidentWithTechnology" type="radio" name="confident" value="@scale" checked="@(scale == 3)">@agreeScaleCaption(scale)
+                        </label>
+                    }
+                </div>
+                <!-- Question 20 -->
+                <div class="form-group">
+                    <label asp-for="CanTechnologyBeMoreEffective">Technology can make teaching factorial trinomials more effective to teach/learn:</label>
+                    @for (var scale = 5; scale >= 1; scale--)
+                    {
+                        <label class="radio-inline">
+                            <input asp-for="CanTechnologyBeMoreEffective" type="radio" name="effective" value="@scale" checked="@(scale == 3)">@agreeScaleCaption(scale)
+                        </label>
+                    }
+                    <div class="form-group">
+                        <label asp-for="CanTechnologyBeEffectiveComment">Explain:</label>
+                        <textarea class="form-control" rows="2" asp-for="CanTechnologyBeEffectiveComment" placeholder="Max 240 characters"></textarea>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Question 21 -->
+        <div class="panel panel-primary container">
+            <div class="panel-heading text-left">
+                I have access to the following technology
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label asp-for="AccessToGraphingCalculator">Graphing Calculator:</label>
+                    @for (var scale = 5; scale >= 1; scale--) {
+                        <label class="radio-inline"><input asp-for="AccessToGraphingCalculator" type="radio" name="access1" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="AccessToBlackboard">Blackboard:</label>
+                    @for (var scale = 5; scale >= 1; scale--) {
+                        <label class="radio-inline"><input asp-for="AccessToBlackboard" type="radio" name="access2" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="AccessToIpad">iPad:</label>
+                    @for (var scale = 5; scale >= 1; scale--) {
+                        <label class="radio-inline"><input asp-for="AccessToIpad" type="radio" name="access3" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="AccessToGames">Computer games:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="AccessToGames" type="radio" name="access4" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="AccessToSmartBoards">SMART Boards:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="AccessToSmartBoards" type="radio" name="access5" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="AccessToPresentationSoftware">Presentation software:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="AccessToPresentationSoftware" type="radio" name="access6" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="AccessToCloudSharing">Cloud Sharing:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="AccessToCloudSharing" type="radio" name="access7" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="AccessToComputerizedTesting">Computerized Testing:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="AccessToComputerizedTesting" type="radio" name="access8" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="AccessToSocialMedia">Social Media:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="AccessToSocialMedia" type="radio" name="access9" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="AccessToMultimediaProjector">Multimedia Projector:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="AccessToMultimediaProjector" type="radio" name="access10" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="AccessToClassroomResponseSystem">Classroom Response System:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="AccessToClassroomResponseSystem" type="radio" name="access11" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="AccessToCAI">CAI (Computer-Assisted Instruction):</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="AccessToCAI" type="radio" name="access12" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="AccessToOnlineProjects">Online Projects and Collaboration Tools:</label>
+                    @for (var scale = 5; scale >= 1; scale--) {
+                        <label class="radio-inline"><input asp-for="AccessToOnlineProjects" type="radio" name="access13" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="AccessToInformationVisualization">Information Visualization Tools:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="AccessToInformationVisualization" type="radio" name="access14" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="AccessToOther">Other:</label>
+                    <input class="form-control" asp-for="AccessToOtherSpecified" placeholder="Max 120 characters" />
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="AccessToOther" type="radio" name="access15" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Question 22 -->
+        <div class="panel panel-primary container">
+            <div class="panel-heading text-left">
+                I incorporate the following technology to teach factoring trinomials
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label asp-for="IncorporateGraphingCalculator">Graphing Calculator:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="IncorporateGraphingCalculator" type="radio" name="incorp1" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="IncorporateBlackboard">Blackboard:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="IncorporateBlackboard" type="radio" name="incorp2" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="IncorporateIpad">iPad:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="IncorporateIpad" type="radio" name="incorp3" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="IncorporateGames">Computer games:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="IncorporateGames" type="radio" name="incorp4" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="IncorporateSmartBoards">SMART Boards:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="IncorporateSmartBoards" type="radio" name="incorp5" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="IncorporatePresentationSoftware">Presentation software:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="IncorporatePresentationSoftware" type="radio" name="incorp6" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="IncorporateCloudSharing">Cloud Sharing:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="IncorporateCloudSharing" type="radio" name="incorp7" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="IncorporateComputerizedTesting">Computerized Testing:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="IncorporateComputerizedTesting" type="radio" name="incorp8" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="IncorporateSocialMedia">Social Media:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="IncorporateSocialMedia" type="radio" name="incorp9" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="IncorporateMultimediaProjector">Multimedia Projector:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="IncorporateMultimediaProjector" type="radio" name="incorp10" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="IncorporateClassroomResponseSystem">Classroom Response System:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="IncorporateClassroomResponseSystem" type="radio" name="incorp11" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="IncorporateCAI">CAI (Computer-Assisted Instruction):</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="IncorporateCAI" type="radio" name="incorp12" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="IncorporateOnlineProjects">Online Projects and Collaboration Tools:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="IncorporateOnlineProjects" type="radio" name="incorp13" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="IncorporateInformationVisualization">Information Visualization Tools:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="IncorporateInformationVisualization" type="radio" name="incorp14" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="IncorporateOther">Other:</label>
+                    <input class="form-control" asp-for="IncorporateOtherSpecified" placeholder="Max 120 characters" />
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="IncorporateOther" type="radio" name="incorp15" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Question 23 -->
+        <div class="panel panel-primary container">
+            <div class="panel-heading text-left">
+                I use technology to teach the following methods
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label asp-for="UseToDifferenceOfSquares">Difference of Squares:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="UseToDifferenceOfSquares" type="radio" name="method7" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="UseToQuadraticFormula">Quadratic Formula:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="UseToQuadraticFormula" type="radio" name="method8" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="UseToGuessAndCheck">Guess and Check:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="UseToGuessAndCheck" type="radio" name="method9" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="UseToCompleteSquare">Completing the Square:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="UseToCompleteSquare" type="radio" name="method10" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="UseToSquareOfBinomial">Square of Binomial:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="UseToSquareOfBinomial" type="radio" name="method11" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="UseToGrouping">Grouping:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="UseToGrouping" type="radio" name="method12" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="UseToCommonFactor">Greatest Common Factor of Monomials:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="UseToCommonFactor" type="radio" name="method13" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="UseToOtherSpecified">Other:</label>
+                    <input class="form-control" asp-for="UseToOtherSpecified" placeholder="Max 120 characters" />
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline"><input asp-for="UseToOther" type="radio" name="method15" value="@scale" checked="@(scale == 3)">@alwaysScaleCaption(scale)</label>}
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Question 24 -->
+        <div class="panel panel-primary container">
+            <div class="panel-heading text-left">
+                My goal of incorporating technology to teach factoring trinomials is
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label asp-for="GoalToComplyToPrincipal">To comply to my principal's requests:</label>
+                    @for (var scale = 5; scale >= 1; scale--)
+                    {
+                        <label class="radio-inline"><input asp-for="GoalToComplyToPrincipal" type="radio" name="goal1" value="@scale" checked="@(scale == 3)">@agreeScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="GoalToPresentProblems">To present/simulate problems:</label>
+                    @for (var scale = 5; scale >= 1; scale--)
+                    {
+                        <label class="radio-inline"><input asp-for="GoalToPresentProblems" type="radio" name="goal2" value="@scale" checked="@(scale == 3)">@agreeScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="GoalToComputations">To perform computations without mistakes:</label>
+                    @for (var scale = 5; scale >= 1; scale--)
+                    {
+                        <label class="radio-inline"><input asp-for="GoalToComputations" type="radio" name="goal3" value="@scale" checked="@(scale == 3)">@agreeScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="GoalToGraph">To graph:</label>
+                    @for (var scale = 5; scale >= 1; scale--)
+                    {
+                        <label class="radio-inline"><input asp-for="GoalToGraph" type="radio" name="goal4" value="@scale" checked="@(scale == 3)">@agreeScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="GoalToCheckAnswers">To check answers:</label>
+                    @for (var scale = 5; scale >= 1; scale--)
+                    {
+                        <label class="radio-inline"><input asp-for="GoalToCheckAnswers" type="radio" name="goal5" value="@scale" checked="@(scale == 3)">@agreeScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="GoalToStudentKnowledge">To access students' knowledge:</label>
+                    @for (var scale = 5; scale >= 1; scale--)
+                    {
+                        <label class="radio-inline"><input asp-for="GoalToStudentKnowledge" type="radio" name="goal6" value="@scale" checked="@(scale == 3)">@agreeScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="GoalToCommunicate">To communicate:</label>
+                    @for (var scale = 5; scale >= 1; scale--)
+                    {
+                        <label class="radio-inline"><input asp-for="GoalToCommunicate" type="radio" name="goal7" value="@scale" checked="@(scale == 3)">@agreeScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="GoalToEngageStudents">To engage students:</label>
+                    @for (var scale = 5; scale >= 1; scale--)
+                    {
+                        <label class="radio-inline"><input asp-for="GoalToEngageStudents" type="radio" name="goal8" value="@scale" checked="@(scale == 3)">@agreeScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="GoalToIndividualizeLearning">To individualize learning:</label>
+                    @for (var scale = 5; scale >= 1; scale--)
+                    {
+                        <label class="radio-inline"><input asp-for="GoalToIndividualizeLearning" type="radio" name="goal9" value="@scale" checked="@(scale == 3)">@agreeScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="GoalToDifferentReprentations">To introduce different representations of functions:</label>
+                    @for (var scale = 5; scale >= 1; scale--)
+                    {
+                        <label class="radio-inline"><input asp-for="GoalToDifferentReprentations" type="radio" name="goal10" value="@scale" checked="@(scale == 3)">@agreeScaleCaption(scale)</label>}
+                </div>
+                <div class="form-group">
+                    <label asp-for="GoalToTeachTechnology">To teach students how to use technology:</label>
+                    @for (var scale = 5; scale >= 1; scale--)
+                    {
+                        <label class="radio-inline"><input asp-for="GoalToTeachTechnology" type="radio" name="goal11" value="@scale" checked="@(scale == 3)">@agreeScaleCaption(scale)</label>}
+                </div>
+                 <div class="form-group">
+                    <label asp-for="GoalToOtherSpecified">Other:</label>
+                    <input class="form-control" asp-for="GoalToOtherSpecified" placeholder="Max 120 characters" />
+                    @for (var scale = 5; scale >= 1; scale--)
+                    {
+                        <label class="radio-inline"><input asp-for="GoalToOther" type="radio" name="goal12" value="@scale" checked="@(scale == 3)">@agreeScaleCaption(scale)</label>}
+                </div>
+            </div>
+
+        </div>
+
 
 
         <div class="text-center">

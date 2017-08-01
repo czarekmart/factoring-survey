@@ -2,4 +2,14 @@
 .vs
 src/FactoringSurvey/bin/
 src/FactoringSurvey/obj/
+src/FactoringSurvey/project.*
+src/FactoringSurvey/Startup.cs
+
+
+
+
+
+
+
+
 

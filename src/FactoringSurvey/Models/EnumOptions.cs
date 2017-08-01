@@ -30,6 +30,11 @@ namespace FactoringSurvey.Models
 		public const short AgeFifties = 50;
 		public const short AgeSixtyPlus = 60;
 
+		public const int EvalEffective		= 4;
+		public const int EvalMixed			= 3;
+		public const int EvalDontKnow		= 2;
+		public const int EvalNotEffective	= 1;
+
 		public static IEnumerable<EnumOption> Genders
 		{
 			get

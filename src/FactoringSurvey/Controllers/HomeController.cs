@@ -17,7 +17,7 @@ namespace FactoringSurvey.Controllers
 		[HttpGet]
 		public ViewResult SurveyForm()
 		{
-			return View();
+			return View(new SurveyResponse());
 		}
 
 		[HttpPost]

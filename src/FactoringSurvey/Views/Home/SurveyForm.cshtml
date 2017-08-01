@@ -74,6 +74,14 @@
     <title>Survey Form</title>
     <link rel="stylesheet" href="~/css/styles.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <style type="text/css">
+        .radio-inline + .radio-inline {
+            margin-left: 16px;
+        }
+        .radio-inline {
+            margin-left: 16px; 
+            }
+    </style>
 </head>
 <body>
     <div class="panel panel-info">
@@ -610,29 +618,29 @@
                 My goal of incorporating technology to teach factoring trinomials is
             </div>
             <div class="panel-body">
-                <div class="form-group">
-                    <label asp-for="GoalToComplyToPrincipal">To comply to my principal's requests:</label>
+                <div class="form-group row">
+                    <label class="col col-lg-4 col-md-12 col-sm-12 col-xs-12" asp-for="GoalToComplyToPrincipal">To comply to my principal's requests:</label>
                     @for (var scale = 5; scale >= 1; scale--)
                     {
-                        <label class="radio-inline"><input asp-for="GoalToComplyToPrincipal" type="radio" name="goal1" value="@scale" checked="@(scale == 3)">@agreeScaleCaption(scale)</label>}
+                        <label class="radio-inline col col-lg-1 col-md-4 col-sm-4 col-xs-12"><input asp-for="GoalToComplyToPrincipal" type="radio" name="goal2" value="@scale" checked="@(scale == 3)">@agreeScaleCaption(scale)</label>}
                 </div>
-                <div class="form-group">
-                    <label asp-for="GoalToPresentProblems">To present/simulate problems:</label>
+                <div class="form-group row">
+                    <label class="col col-lg-4" asp-for="GoalToPresentProblems">To present/simulate problems:</label>
                     @for (var scale = 5; scale >= 1; scale--)
                     {
-                        <label class="radio-inline"><input asp-for="GoalToPresentProblems" type="radio" name="goal2" value="@scale" checked="@(scale == 3)">@agreeScaleCaption(scale)</label>}
+                        <label class="radio-inline col col-lg-1"><input asp-for="GoalToPresentProblems" type="radio" name="goal2" value="@scale" checked="@(scale == 3)">@agreeScaleCaption(scale)</label>}
                 </div>
-                <div class="form-group">
-                    <label asp-for="GoalToComputations">To perform computations without mistakes:</label>
+                <div class="form-group row">
+                    <label class="col" asp-for="GoalToComputations">To perform computations without mistakes:</label>
                     @for (var scale = 5; scale >= 1; scale--)
                     {
-                        <label class="radio-inline"><input asp-for="GoalToComputations" type="radio" name="goal3" value="@scale" checked="@(scale == 3)">@agreeScaleCaption(scale)</label>}
+                        <label class="radio-inline col"><input asp-for="GoalToComputations" type="radio" name="goal3" value="@scale" checked="@(scale == 3)">@agreeScaleCaption(scale)</label>}
                 </div>
-                <div class="form-group">
-                    <label asp-for="GoalToGraph">To graph:</label>
+                <div class="form-group row">
+                    <label class="col" asp-for="GoalToGraph">To graph:</label>
                     @for (var scale = 5; scale >= 1; scale--)
                     {
-                        <label class="radio-inline"><input asp-for="GoalToGraph" type="radio" name="goal4" value="@scale" checked="@(scale == 3)">@agreeScaleCaption(scale)</label>}
+                        <label class="radio-inline col"><input asp-for="GoalToGraph" type="radio" name="goal4" value="@scale" checked="@(scale == 3)">@agreeScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group">
                     <label asp-for="GoalToCheckAnswers">To check answers:</label>

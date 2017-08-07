@@ -4,14 +4,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using FactoringSurvey.Models;
+using Microsoft.AspNetCore.Hosting;
 
 namespace FactoringSurvey.Controllers
 {
     public class HomeController : Controller
     {
+		private ISurveyRepository _repository;
+
+		public HomeController(ISurveyRepository repo, IHostingEnvironment hostingEnvironment)
+		{
+			_repository = repo;
+			_repository.SetHostingEnvironment(hostingEnvironment);
+		}
+
         public ViewResult Index()
         {
-            return View("Welcome");
+			return View("Welcome");
         }
 
 		[HttpGet]
@@ -25,7 +34,9 @@ namespace FactoringSurvey.Controllers
 		{
 			if(ModelState.IsValid)
 			{
-				Repository.AddResponse(response);
+				// Run it in the background
+				Task.Run(() => _repository.AddResponse(response));
+
 				return View("Thanks", response);
 			}
 			else
@@ -34,9 +45,20 @@ namespace FactoringSurvey.Controllers
 			}
 		}
 
-		public ViewResult ListResponses()
+		public async Task<ViewResult> List()
 		{
-			return View(Repository.Responses);
+			var responses = await Task.Run(() => getResponseList());
+			return View("List", responses);
+		}
+
+		private List<SurveyResponse> getResponseList()
+		{
+			return _repository.GetResponses().ToList();
+		}
+
+		public ViewResult ListSync()
+		{
+			return View("List", _repository.GetResponses());
 		}
 
         public IActionResult About()

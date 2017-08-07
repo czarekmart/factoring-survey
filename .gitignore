@@ -3,7 +3,7 @@
 src/FactoringSurvey/bin/
 src/FactoringSurvey/obj/
 src/FactoringSurvey/FactoringSurvey.xproj.user
-
+src/FileRepository/*.json
 
 
 

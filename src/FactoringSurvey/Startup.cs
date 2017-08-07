@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using FactoringSurvey.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FactoringSurvey
 {
@@ -19,7 +21,11 @@ namespace FactoringSurvey
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
-            Configuration = builder.Build();
+            //Configuration = builder.Build();
+			Configuration = new ConfigurationBuilder()
+				.SetBasePath(env.ContentRootPath)
+				.AddJsonFile("appsettings.json")
+				.Build();
         }
 
         public IConfigurationRoot Configuration { get; }
@@ -27,8 +33,14 @@ namespace FactoringSurvey
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
             services.AddMvc();
+
+            // Add framework services.
+			services.AddDbContext<ApplicationDbContext>(options=>
+				options.UseSqlServer(
+					Configuration["Data:SurveyResponses:ConnectionString"]));
+			services.AddTransient<ISurveyRepository, SurveyFileRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

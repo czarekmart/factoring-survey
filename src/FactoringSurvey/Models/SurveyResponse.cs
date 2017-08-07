@@ -27,9 +27,9 @@ namespace FactoringSurvey.Models
 		[MaxLength(50)]
 		public string Email { get; set; }
 
-		public short Gender									{ get; set; } = EnumOptions.Unspecified;
+		public short Gender									{ get; set; } = EnumOptions.GenderFemale;
 
-		public short Age									{ get; set; } = EnumOptions.Unspecified;
+		public short Age									{ get; set; } = EnumOptions.AgeTwenties;
 
 		[MaxLength(50)]
 		public string SchoolName							{ get; set; }

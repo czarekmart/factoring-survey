@@ -15,17 +15,21 @@ namespace FactoringSurvey.Models
 
 		private string getRepositoryFolder()
 		{
-			var folder = System.IO.Path.Combine(_hostingEnvironment.ContentRootPath, "FileRepository");
+			var folder = System.IO.Path.Combine(_hostingEnvironment.WebRootPath, "repo");
 			if(System.IO.Directory.Exists(folder))
 				System.IO.Directory.CreateDirectory(folder);
 			return folder;
+		}
+		public string GetRepoPath()
+		{
+			return getRepositoryFolder();
 		}
 
 		public async Task SendEmailAsync(string email, string subject, string message)
 		{
 			var emailMessage = new MimeMessage();
  
-			emailMessage.From.Add(new MailboxAddress("Factoring Survey", "czarekmart@gmail.com"));
+			emailMessage.From.Add(new MailboxAddress("Factoring Survey", "free.all.cezars@gmail.com"));
 			emailMessage.To.Add(new MailboxAddress("Gosia Mart", email));
 			emailMessage.Subject = subject;
 			emailMessage.Body = new TextPart("plain") { Text = message };
@@ -44,7 +48,7 @@ namespace FactoringSurvey.Models
 			{
 				var emailMessage = new MimeMessage();
  
-				emailMessage.From.Add(new MailboxAddress("Factoring Survey", "czarekmart@gmail.com"));
+				emailMessage.From.Add(new MailboxAddress("Factoring Survey", "free.all.cezars@gmail.com"));
 				emailMessage.To.Add(new MailboxAddress("Gosia Mart", email));
 				emailMessage.Subject = subject;
 				emailMessage.Body = new TextPart("plain") { Text = messageBody };
@@ -59,7 +63,7 @@ namespace FactoringSurvey.Models
 					client.AuthenticationMechanisms.Remove("XOAUTH2");
 
 					// Note: only needed if the SMTP server requires authentication
-					client.Authenticate("czarekmart", "Czarek1958");
+					client.Authenticate("free.all.cezars", "Mohawk.123");
 
 					client.Send(emailMessage);
 					client.Disconnect(true);
@@ -68,6 +72,7 @@ namespace FactoringSurvey.Models
 			catch(Exception ex)
 			{
 				System.Diagnostics.Debug.WriteLine("Error writing email: " + ex.Message);
+				throw;
 			}
 		}
 
@@ -127,6 +132,7 @@ namespace FactoringSurvey.Models
 				catch(Exception ex)
 				{
 					System.Diagnostics.Debug.WriteLine(string.Format("File {0} is not valid survery response: {1}", file, ex.Message));
+					throw;
 				}
 				if(response != null && !string.IsNullOrEmpty(response.Name))
 					yield return response;

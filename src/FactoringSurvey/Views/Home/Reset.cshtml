@@ -1,0 +1,55 @@
+﻿@model FactoringSurvey.Models.ResetInfo
+
+@{
+    Layout = null;
+}
+
+@using FactoringSurvey.Models;
+
+@{
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Reset</title>
+    <link rel="stylesheet" href="~/css/styles.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <style>
+        .hidden-item {
+            display:none;
+        }
+    </style>
+</head>
+<body>
+
+    <form class="p-a-1" asp-action="Reset" method="post">
+
+        <div class="alert alert-info" role="alert">There are @Model.RepoCount survey responses.</div>
+
+        <div class="alert alert-danger @Model.HiddenClass" role="alert" >@Model.UserError</div>
+
+        <div class="panel panel-primary container">
+           <div class="panel-body">
+                <div asp-validation-summary="All"></div>
+
+                <div class="form-group">
+                    <label asp-for="Password">Password:</label>
+                    <input type="password" class="form-control" asp-for="Password" placeholder="Password" />
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button class="btn btn-primary" type="submit">
+                Reset Survey
+            </button>
+        </div>
+
+    </form>
+
+
+</body>
+</html>

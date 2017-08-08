@@ -11,5 +11,6 @@ namespace FactoringSurvey.Models
 		IEnumerable<SurveyResponse> GetResponses();
 		void AddResponse(SurveyResponse response) ;
 		void SetHostingEnvironment(IHostingEnvironment hostingEnvironment);
+		string GetRepoPath();
     }
 }

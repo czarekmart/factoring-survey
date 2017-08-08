@@ -2,6 +2,8 @@
     ViewData["Title"] = "About";
 }
 <h2>@ViewData["Title"].</h2>
-<h3>@ViewData["Message"]</h3>
+<p>@Html.Raw(@ViewData["Message"])</p>
+<br /><br />
+<p>@Html.Raw(@ViewData["Message2"])</p>
+<br /><br />
 
-<p>Use this area to provide additional information.</p>

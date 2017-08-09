@@ -31,7 +31,8 @@ namespace FactoringSurvey.Controllers
 		[HttpGet]
 		public ViewResult SurveyForm()
 		{
-			return View(new SurveyResponse());
+			var newResponse = new SurveyResponse();
+			return View(newResponse);
 		}
 
 		[HttpPost]

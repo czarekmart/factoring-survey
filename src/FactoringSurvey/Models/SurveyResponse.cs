@@ -51,7 +51,14 @@ namespace FactoringSurvey.Models
 
 		public int YearsOfTeachingMath						{ get; set; } 
 
-		public bool[] TaughtGrade							{ get; set ; } = new bool[GradeCount];
+		public bool TaughtGrade6							{ get; set ; }
+		public bool TaughtGrade7							{ get; set ; }
+		public bool TaughtGrade8							{ get; set ; }
+		public bool TaughtGrade9							{ get; set ; }
+		public bool TaughtGrade10							{ get; set ; }
+		public bool TaughtGrade11							{ get; set ; }
+		public bool TaughtGrade12							{ get; set ; }
+		public bool TaughtCollege							{ get; set ; }
 
 		public bool TeachingCourseBasic						{ get; set; }
 		public bool TeachingCoursePreAlgebra				{ get; set; }

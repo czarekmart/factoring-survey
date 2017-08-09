@@ -79,30 +79,104 @@ namespace FactoringSurvey.Models
 		public bool NotTaughtTrinomials						{ get; set; }
 
 		public int TaughtFactoringInAlgebra1Years			{ get; set; }
-		public bool[] TaughtFactoringInAlgebra1Grades		{ get; set ; } = new bool[GradeCount];
+		public bool TaughtInAlgebra1Grade6					{ get; set ; }
+		public bool TaughtInAlgebra1Grade7					{ get; set ; }
+		public bool TaughtInAlgebra1Grade8					{ get; set ; }
+		public bool TaughtInAlgebra1Grade9					{ get; set ; }
+		public bool TaughtInAlgebra1Grade10					{ get; set ; }
+		public bool TaughtInAlgebra1Grade11					{ get; set ; }
+		public bool TaughtInAlgebra1Grade12					{ get; set ; }
+		public bool TaughtInAlgebra1College					{ get; set ; }	
 
 		public int TaughtFactoringInAlgebra2Years			{ get; set; }
-		public bool[] TaughtFactoringInAlgebra2Grades		{ get; set ; } = new bool[GradeCount];
+		public bool TaughtInAlgebra2Grade6					{ get; set ; }
+		public bool TaughtInAlgebra2Grade7					{ get; set ; }
+		public bool TaughtInAlgebra2Grade8					{ get; set ; }
+		public bool TaughtInAlgebra2Grade9					{ get; set ; }
+		public bool TaughtInAlgebra2Grade10					{ get; set ; }
+		public bool TaughtInAlgebra2Grade11					{ get; set ; }
+		public bool TaughtInAlgebra2Grade12					{ get; set ; }
+		public bool TaughtInAlgebra2College					{ get; set ; }	
 
 		public int TaughtFactoringInPrecalculusYears		{ get; set; }
-		public bool[] TaughtFactoringInPrecalculusGrades	{ get; set ; } = new bool[GradeCount];
+		public bool TaughtInPrecalculusGrade6				{ get; set ; }
+		public bool TaughtInPrecalculusGrade7				{ get; set ; }
+		public bool TaughtInPrecalculusGrade8				{ get; set ; }
+		public bool TaughtInPrecalculusGrade9				{ get; set ; }
+		public bool TaughtInPrecalculusGrade10				{ get; set ; }
+		public bool TaughtInPrecalculusGrade11				{ get; set ; }
+		public bool TaughtInPrecalculusGrade12				{ get; set ; }
+		public bool TaughtInPrecalculusCollege				{ get; set ; }	
 
 		public int TaughtFactoringInCalculusYears			{ get; set; }
-		public bool[] TaughtFactoringInCalculusGrades		{ get; set ; } = new bool[GradeCount];
+		public bool TaughtInCalculusGrade6					{ get; set; }
+		public bool TaughtInCalculusGrade7					{ get; set; }
+		public bool TaughtInCalculusGrade8					{ get; set; }
+		public bool TaughtInCalculusGrade9					{ get; set; }
+		public bool TaughtInCalculusGrade10					{ get; set; }
+		public bool TaughtInCalculusGrade11					{ get; set; }
+		public bool TaughtInCalculusGrade12					{ get; set; }
+		public bool TaughtInCalculusCollege					{ get; set; }	
 
 		[MaxLength(50)]
 		public string TaughtFactoringInOtherSpecified		{ get; set; }
 		public int TaughtFactoringInOtherYears				{ get; set; }
-		public bool[] TaughtFactoringInOtherGrades			{ get; set ; } = new bool[GradeCount];
+		public bool TaughtInOtherGrade6						{ get; set; }
+		public bool TaughtInOtherGrade7						{ get; set; }
+		public bool TaughtInOtherGrade8						{ get; set; }
+		public bool TaughtInOtherGrade9						{ get; set; }
+		public bool TaughtInOtherGrade10					{ get; set; }
+		public bool TaughtInOtherGrade11					{ get; set; }
+		public bool TaughtInOtherGrade12					{ get; set; }
+		public bool TaughtInOtherCollege					{ get; set; }	
 
 
 		// Question 13
 
-		public bool[] TeachingNowInAlgebra1Grades			{ get; set ; } = new bool[GradeCount];
-		public bool[] TeachingNowInAlgebra2Grades			{ get; set ; } = new bool[GradeCount];
-		public bool[] TeachingNowInPrecalculusGrades		{ get; set ; } = new bool[GradeCount];
-		public bool[] TeachingNowInCalculusGrades			{ get; set ; } = new bool[GradeCount];
-		public bool[] TeachingNowInOtherGrades				{ get; set ; } = new bool[GradeCount];
+		public bool TeachingNowInAlgebra1Grade6				{ get; set; }
+		public bool TeachingNowInAlgebra1Grade7				{ get; set; }
+		public bool TeachingNowInAlgebra1Grade8				{ get; set; }
+		public bool TeachingNowInAlgebra1Grade9				{ get; set; }
+		public bool TeachingNowInAlgebra1Grade10			{ get; set; }
+		public bool TeachingNowInAlgebra1Grade11			{ get; set; }
+		public bool TeachingNowInAlgebra1Grade12			{ get; set; }
+		public bool TeachingNowInAlgebra1College			{ get; set; } 
+
+		public bool TeachingNowInAlgebra2Grade6				{ get; set; }
+		public bool TeachingNowInAlgebra2Grade7				{ get; set; }
+		public bool TeachingNowInAlgebra2Grade8				{ get; set; }
+		public bool TeachingNowInAlgebra2Grade9				{ get; set; }
+		public bool TeachingNowInAlgebra2Grade10			{ get; set; }
+		public bool TeachingNowInAlgebra2Grade11			{ get; set; }
+		public bool TeachingNowInAlgebra2Grade12			{ get; set; }
+		public bool TeachingNowInAlgebra2College			{ get; set; } 
+
+		public bool TeachingNowInPrecalculusGrade6			{ get; set; }
+		public bool TeachingNowInPrecalculusGrade7			{ get; set; }
+		public bool TeachingNowInPrecalculusGrade8			{ get; set; }
+		public bool TeachingNowInPrecalculusGrade9			{ get; set; }
+		public bool TeachingNowInPrecalculusGrade10			{ get; set; }
+		public bool TeachingNowInPrecalculusGrade11			{ get; set; }
+		public bool TeachingNowInPrecalculusGrade12			{ get; set; }
+		public bool TeachingNowInPrecalculusCollege			{ get; set; } 
+
+		public bool TeachingNowInCalculusGrade6				{ get; set; }
+		public bool TeachingNowInCalculusGrade7				{ get; set; }
+		public bool TeachingNowInCalculusGrade8				{ get; set; }
+		public bool TeachingNowInCalculusGrade9				{ get; set; }
+		public bool TeachingNowInCalculusGrade10			{ get; set; }
+		public bool TeachingNowInCalculusGrade11			{ get; set; }
+		public bool TeachingNowInCalculusGrade12			{ get; set; }
+		public bool TeachingNowInCalculusCollege			{ get; set; } 
+
+		public bool TeachingNowInOtherGrade6				{ get; set; }
+		public bool TeachingNowInOtherGrade7				{ get; set; }
+		public bool TeachingNowInOtherGrade8				{ get; set; }
+		public bool TeachingNowInOtherGrade9				{ get; set; }
+		public bool TeachingNowInOtherGrade10				{ get; set; }
+		public bool TeachingNowInOtherGrade11				{ get; set; }
+		public bool TeachingNowInOtherGrade12				{ get; set; }
+		public bool TeachingNowInOtherCollege				{ get; set; } 
 		[MaxLength(50)]
 		public string TeachingNowInOtherSpecified			{ get; set ; }
 

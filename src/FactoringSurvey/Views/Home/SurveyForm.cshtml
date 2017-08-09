@@ -79,8 +79,8 @@
             }
         });
 
-        var scalingRadioLabelGridClass = "col col-lg-4 col-md-12 col-sm-12 col-xs-12";
-        var scalingRadioInputGridClass = "col col-lg-1 col-md-4 col-sm-4 col-xs-12";
+        var scalingLabel = "col col-lg-4 col-md-12 col-sm-12 col-xs-12";
+        var scalingRadio = "col col-lg-1 col-md-4 col-sm-4 col-xs-12";
         var gridClassAllColumns = "col col-lg-12 col-md-12 col-sm-12 col-xs-12";
         var allColumns = gridClassAllColumns;
 
@@ -155,7 +155,7 @@
                     @foreach (var opt in EnumOptions.Genders)
                     {
                         <label class="radio-inline col-lg-1 col-md-2 col-sm-12 col-xs-12">
-                            <input asp-for="Gender" type="radio" name="gender" value="@opt.Value">@opt.Description
+                            <input asp-for="Gender" type="radio" name="Gender" value="@opt.Value">@opt.Description
                         </label>
                     }
                 </div>
@@ -165,7 +165,7 @@
                     @foreach (var opt in EnumOptions.Ages)
                     {
                         <label class="radio-inline col-lg-1 col-md-2 col-sm-12 col-xs-12">
-                            <input asp-for="Age" type="radio" name="age" value="@opt.Value">@opt.Description
+                            <input asp-for="Age" type="radio" name="Age" value="@opt.Value">@opt.Description
                         </label>}
                 </div>
 
@@ -181,16 +181,16 @@
 
                 <div class="form-group">
                     <label>Which of the following university level courses did you take before becoming a mathematics teacher (check all that apply):</label>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="TookMathForSecondary">Math for secondary teachers</label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="TookMathForHighSchool">Math for high school</label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="TookGeometryForTeachers">Geometry for teachers</label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="TookMathMethods">Math methods course</label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="TookPrecalculus">Pre-calculus</label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="TookCalculus1">Calculus I</label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="TookCalculus2">Calculus II</label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="TookCalculus3">Calculus III</label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="TookMathHistory">History of Mathematics</label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="TookAbstractAlgebra">Abstract Algebra</label></div>
+                    <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TookMathForSecondary)Math for secondary teachers</label></div>
+                    <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TookMathForHighSchool)Math for high school</label></div>
+                    <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TookGeometryForTeachers)Geometry for teachers</label></div>
+                    <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TookMathMethods)Math methods course</label></div>
+                    <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TookPrecalculus)Pre-calculus</label></div>
+                    <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TookCalculus1)Calculus I</label></div>
+                    <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TookCalculus2)Calculus II</label></div>
+                    <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TookCalculus3)Calculus III</label></div>
+                    <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TookMathHistory)History of Mathematics</label></div>
+                    <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TookAbstractAlgebra)Abstract Algebra</label></div>
                 </div>
 
                 <div class="form-group">
@@ -200,26 +200,26 @@
 
                 <div class="form-group row">
                     <label class="@gridClassAllColumns">What grade have you taught mathematics (check all that apply):</label>
-                    <label class="checkbox-inline @colByGrade(6)">  <input type="checkbox" asp-for="TaughtGrade6">@Html.Raw(gradeCaption(6))</label>
-                    <label class="checkbox-inline @colByGrade(7)">  <input type="checkbox" asp-for="TaughtGrade7">@Html.Raw(gradeCaption(7))</label>
-                    <label class="checkbox-inline @colByGrade(8)">  <input type="checkbox" asp-for="TaughtGrade8">@Html.Raw(gradeCaption(8))</label>
-                    <label class="checkbox-inline @colByGrade(9)">  <input type="checkbox" asp-for="TaughtGrade9">@Html.Raw(gradeCaption(9))</label>
-                    <label class="checkbox-inline @colByGrade(10)"> <input type="checkbox" asp-for="TaughtGrade10">@Html.Raw(gradeCaption(10))</label>
-                    <label class="checkbox-inline @colByGrade(11)"> <input type="checkbox" asp-for="TaughtGrade11">@Html.Raw(gradeCaption(11))</label>
-                    <label class="checkbox-inline @colByGrade(12)"> <input type="checkbox" asp-for="TaughtGrade12">@Html.Raw(gradeCaption(12))</label>
-                    <label class="checkbox-inline @colByGrade(13)"> <input type="checkbox" asp-for="TaughtCollege">@Html.Raw(gradeCaption(13))</label>
+                    <label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m=> m.TaughtGrade6)@Html.Raw(gradeCaption(6))</label>
+                    <label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m=> m.TaughtGrade7)@Html.Raw(gradeCaption(7))</label>
+                    <label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m=> m.TaughtGrade8)@Html.Raw(gradeCaption(8))</label>
+                    <label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m=> m.TaughtGrade9)@Html.Raw(gradeCaption(9))</label>
+                    <label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m=> m.TaughtGrade10)@Html.Raw(gradeCaption(10))</label>
+                    <label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m=> m.TaughtGrade11)@Html.Raw(gradeCaption(11))</label>
+                    <label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m=> m.TaughtGrade12)@Html.Raw(gradeCaption(12))</label>
+                    <label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m=> m.TaughtCollege)@Html.Raw(gradeCaption(13))</label>
                 </div>
 
                 <div class="form-group">
                     <label>What course(s) are you currently teaching (check all that apply):</label>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="TeachingCourseBasic" >Basic Math</label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="TeachingCoursePreAlgebra" >Pre-Algebra</label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="TeachingCourseAlgebra1" >Algebra 1</label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="TeachingCourseIntegrated" >Integrated Math</label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="TeachingCourseAlgebra2" >Algebra 2</label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="TeachingCoursePreCalculus" >Pre-Calculus</label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="TeachingCourseCalculus" >Calculus</label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="TeachingCourseProbability" >Probability and Statistics</label></div>
+                    <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TeachingCourseBasic)Basic Math</label></div>
+                    <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TeachingCoursePreAlgebra)Pre-Algebra</label></div>
+                    <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TeachingCourseAlgebra1)Algebra 1</label></div>
+                    <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TeachingCourseIntegrated)Integrated Math</label></div>
+                    <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TeachingCourseAlgebra2)Algebra 2</label></div>
+                    <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TeachingCoursePreCalculus)Pre-Calculus</label></div>
+                    <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TeachingCourseCalculus)Calculus</label></div>
+                    <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TeachingCourseProbability)Probability and Statistics</label></div>
                     <label asp-for="CourseOther">Other:</label>
                     <input class="form-control" asp-for="CourseOther" placeholder="Other course(s)" />
                 </div>
@@ -240,38 +240,68 @@
                 <div class="form-group row">
                     <label asp-for="TaughtFactoringInAlgebra1Years">Algebra 1 (# of years):<input class="form-control" asp-for="TaughtFactoringInAlgebra1Years" /></label>
                     <label class="@allColumns nobold">Specify grades:</label>
-                    @for (var grade = 6; grade < SurveyResponse.GradeCount; grade++){
-                        <label class="checkbox-inline @colByGrade(grade)"><input type="checkbox" asp-for="TaughtFactoringInAlgebra1Grades[grade]">@Html.Raw(gradeCaption(grade))</label>}
+
+                    <label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m=> m.TaughtInAlgebra1Grade6)@Html.Raw(gradeCaption(6))</label>
+                    <label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m=> m.TaughtInAlgebra1Grade7)@Html.Raw(gradeCaption(7))</label>
+                    <label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m=> m.TaughtInAlgebra1Grade8)@Html.Raw(gradeCaption(8))</label>
+                    <label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m=> m.TaughtInAlgebra1Grade9)@Html.Raw(gradeCaption(9))</label>
+                    <label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m=> m.TaughtInAlgebra1Grade10)@Html.Raw(gradeCaption(10))</label>
+                    <label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m=> m.TaughtInAlgebra1Grade11)@Html.Raw(gradeCaption(11))</label>
+                    <label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m=> m.TaughtInAlgebra1Grade12)@Html.Raw(gradeCaption(12))</label>
+                    <label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m=> m.TaughtInAlgebra1College)@Html.Raw(gradeCaption(13))</label>
                 </div>
 
                 <div class="form-group row">
                     <label asp-for="TaughtFactoringInAlgebra2Years">Algebra 2 (# of years):<input class="form-control" asp-for="TaughtFactoringInAlgebra2Years" /></label>
                     <label class="@allColumns nobold">Specify grades:</label>
-                    @for (var grade = 6; grade < SurveyResponse.GradeCount; grade++){
-                        <label class="checkbox-inline @colByGrade(grade)"><input type="checkbox" asp-for="TaughtFactoringInAlgebra2Grades[grade]">@Html.Raw(gradeCaption(grade))</label>}
+                    <label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m=> m.TaughtInAlgebra2Grade6)@Html.Raw(gradeCaption(6))</label>
+                    <label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m=> m.TaughtInAlgebra2Grade7)@Html.Raw(gradeCaption(7))</label>
+                    <label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m=> m.TaughtInAlgebra2Grade8)@Html.Raw(gradeCaption(8))</label>
+                    <label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m=> m.TaughtInAlgebra2Grade9)@Html.Raw(gradeCaption(9))</label>
+                    <label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m=> m.TaughtInAlgebra2Grade10)@Html.Raw(gradeCaption(10))</label>
+                    <label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m=> m.TaughtInAlgebra2Grade11)@Html.Raw(gradeCaption(11))</label>
+                    <label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m=> m.TaughtInAlgebra2Grade12)@Html.Raw(gradeCaption(12))</label>
+                    <label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m=> m.TaughtInAlgebra2College)@Html.Raw(gradeCaption(13))</label>
                 </div>
 
                 <div class="form-group row">
                     <label asp-for="TaughtFactoringInPrecalculusYears">Pre-Calculus (# of years):<input class="form-control" asp-for="TaughtFactoringInPrecalculusYears" /></label>
                     <label class="@allColumns nobold">Specify grades:</label>
-                    @for (var grade = 6; grade < SurveyResponse.GradeCount; grade++){
-                        <label class="checkbox-inline @colByGrade(grade)"><input type="checkbox" asp-for="TaughtFactoringInPrecalculusGrades[grade]">@Html.Raw(gradeCaption(grade))</label>}
+                    <label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m=> m.TaughtInPrecalculusGrade6)@Html.Raw(gradeCaption(6))</label>
+                    <label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m=> m.TaughtInPrecalculusGrade7)@Html.Raw(gradeCaption(7))</label>
+                    <label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m=> m.TaughtInPrecalculusGrade8)@Html.Raw(gradeCaption(8))</label>
+                    <label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m=> m.TaughtInPrecalculusGrade9)@Html.Raw(gradeCaption(9))</label>
+                    <label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m=> m.TaughtInPrecalculusGrade10)@Html.Raw(gradeCaption(10))</label>
+                    <label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m=> m.TaughtInPrecalculusGrade11)@Html.Raw(gradeCaption(11))</label>
+                    <label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m=> m.TaughtInPrecalculusGrade12)@Html.Raw(gradeCaption(12))</label>
+                    <label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m=> m.TaughtInPrecalculusCollege)@Html.Raw(gradeCaption(13))</label>
                 </div>
 
                 <div class="form-group row">
                     <label asp-for="TaughtFactoringInCalculusYears">Calculus (# of years):<input class="form-control" asp-for="TaughtFactoringInCalculusYears" /></label>
                     <label class="@allColumns nobold">Specify grades:</label>
-                    @for (var grade = 6; grade < SurveyResponse.GradeCount; grade++){
-                        <label class="checkbox-inline @colByGrade(grade)"><input type="checkbox" asp-for="TaughtFactoringInCalculusGrades[grade]">@Html.Raw(gradeCaption(grade))</label>}
+                    <label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m=> m.TaughtInCalculusGrade6)@Html.Raw(gradeCaption(6))</label>
+                    <label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m=> m.TaughtInCalculusGrade7)@Html.Raw(gradeCaption(7))</label>
+                    <label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m=> m.TaughtInCalculusGrade8)@Html.Raw(gradeCaption(8))</label>
+                    <label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m=> m.TaughtInCalculusGrade9)@Html.Raw(gradeCaption(9))</label>
+                    <label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m=> m.TaughtInCalculusGrade10)@Html.Raw(gradeCaption(10))</label>
+                    <label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m=> m.TaughtInCalculusGrade11)@Html.Raw(gradeCaption(11))</label>
+                    <label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m=> m.TaughtInCalculusGrade12)@Html.Raw(gradeCaption(12))</label>
+                    <label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m=> m.TaughtInCalculusCollege)@Html.Raw(gradeCaption(13))</label>
                 </div>
 
                 <div class="form-group row">
                     <label asp-for="TaughtFactoringInOtherYears">Other (# of years):<input class="form-control" asp-for="TaughtFactoringInOtherYears" /></label>
                     <label class="nobold" asp-for="TaughtFactoringInOtherSpecified">Specify:<input class="form-control" asp-for="TaughtFactoringInOtherSpecified" /></label>
                     <label class="@allColumns nobold">Specify grades:</label>
-                    @for (var grade = 6; grade < SurveyResponse.GradeCount; grade++)
-                    {
-                        <label class="checkbox-inline @colByGrade(grade)"><input type="checkbox" asp-for="TaughtFactoringInOtherGrades[grade]">@Html.Raw(gradeCaption(grade))</label>}
+                    <label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m=> m.TaughtInOtherGrade6)@Html.Raw(gradeCaption(6))</label>
+                    <label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m=> m.TaughtInOtherGrade7)@Html.Raw(gradeCaption(7))</label>
+                    <label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m=> m.TaughtInOtherGrade8)@Html.Raw(gradeCaption(8))</label>
+                    <label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m=> m.TaughtInOtherGrade9)@Html.Raw(gradeCaption(9))</label>
+                    <label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m=> m.TaughtInOtherGrade10)@Html.Raw(gradeCaption(10))</label>
+                    <label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m=> m.TaughtInOtherGrade11)@Html.Raw(gradeCaption(11))</label>
+                    <label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m=> m.TaughtInOtherGrade12)@Html.Raw(gradeCaption(12))</label>
+                    <label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m=> m.TaughtInOtherCollege)@Html.Raw(gradeCaption(13))</label>
 
                 </div>
             </div>
@@ -286,42 +316,62 @@
 
                 <div class="form-group row">
                     <label class="@allColumns">Algebra 1:</label>
-                    @for (var grade = 6; grade < SurveyResponse.GradeCount; grade++)
-                    {
-                        <label class="checkbox-inline @colByGrade(grade)"><input type="checkbox" asp-for="TeachingNowInAlgebra1Grades[grade]">@Html.Raw(gradeCaption(grade))</label>
-                    }
+                    <label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m=> m.TeachingNowInAlgebra1Grade6)@Html.Raw(gradeCaption(6))</label>
+                    <label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m=> m.TeachingNowInAlgebra1Grade7)@Html.Raw(gradeCaption(7))</label>
+                    <label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m=> m.TeachingNowInAlgebra1Grade8)@Html.Raw(gradeCaption(8))</label>
+                    <label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m=> m.TeachingNowInAlgebra1Grade9)@Html.Raw(gradeCaption(9))</label>
+                    <label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m=> m.TeachingNowInAlgebra1Grade10)@Html.Raw(gradeCaption(10))</label>
+                    <label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m=> m.TeachingNowInAlgebra1Grade11)@Html.Raw(gradeCaption(11))</label>
+                    <label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m=> m.TeachingNowInAlgebra1Grade12)@Html.Raw(gradeCaption(12))</label>
+                    <label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m=> m.TeachingNowInAlgebra1College)@Html.Raw(gradeCaption(13))</label>
                 </div>
 
                 <div class="form-group row">
                     <label class="@allColumns">Algebra 2:</label>
-                    @for (var grade = 6; grade < SurveyResponse.GradeCount; grade++)
-                    {
-                        <label class="checkbox-inline @colByGrade(grade)"><input type="checkbox" asp-for="TeachingNowInAlgebra2Grades[grade]">@Html.Raw(gradeCaption(grade))</label>
-                    }
+                    <label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m=> m.TeachingNowInAlgebra2Grade6)@Html.Raw(gradeCaption(6))</label>
+                    <label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m=> m.TeachingNowInAlgebra2Grade7)@Html.Raw(gradeCaption(7))</label>
+                    <label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m=> m.TeachingNowInAlgebra2Grade8)@Html.Raw(gradeCaption(8))</label>
+                    <label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m=> m.TeachingNowInAlgebra2Grade9)@Html.Raw(gradeCaption(9))</label>
+                    <label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m=> m.TeachingNowInAlgebra2Grade10)@Html.Raw(gradeCaption(10))</label>
+                    <label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m=> m.TeachingNowInAlgebra2Grade11)@Html.Raw(gradeCaption(11))</label>
+                    <label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m=> m.TeachingNowInAlgebra2Grade12)@Html.Raw(gradeCaption(12))</label>
+                    <label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m=> m.TeachingNowInAlgebra2College)@Html.Raw(gradeCaption(13))</label>
                 </div>
 
                 <div class="form-group row">
                     <label class="@allColumns">Pre-Calculus:</label>
-                    @for (var grade = 6; grade < SurveyResponse.GradeCount; grade++)
-                    {
-                        <label class="checkbox-inline @colByGrade(grade)"><input type="checkbox" asp-for="TeachingNowInPrecalculusGrades[grade]">@Html.Raw(gradeCaption(grade))</label>
-                    }
+                    <label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m=> m.TeachingNowInPrecalculusGrade6)@Html.Raw(gradeCaption(6))</label>
+                    <label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m=> m.TeachingNowInPrecalculusGrade7)@Html.Raw(gradeCaption(7))</label>
+                    <label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m=> m.TeachingNowInPrecalculusGrade8)@Html.Raw(gradeCaption(8))</label>
+                    <label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m=> m.TeachingNowInPrecalculusGrade9)@Html.Raw(gradeCaption(9))</label>
+                    <label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m=> m.TeachingNowInPrecalculusGrade10)@Html.Raw(gradeCaption(10))</label>
+                    <label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m=> m.TeachingNowInPrecalculusGrade11)@Html.Raw(gradeCaption(11))</label>
+                    <label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m=> m.TeachingNowInPrecalculusGrade12)@Html.Raw(gradeCaption(12))</label>
+                    <label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m=> m.TeachingNowInPrecalculusCollege)@Html.Raw(gradeCaption(13))</label>
                 </div>
 
                 <div class="form-group row">
                     <label class="@allColumns">Calculus:</label>
-                    @for (var grade = 6; grade < SurveyResponse.GradeCount; grade++)
-                    {
-                        <label class="checkbox-inline @colByGrade(grade)"><input type="checkbox" asp-for="TeachingNowInCalculusGrades[grade]">@Html.Raw(gradeCaption(grade))</label>
-                    }
+                    <label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m=> m.TeachingNowInCalculusGrade6)@Html.Raw(gradeCaption(6))</label>
+                    <label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m=> m.TeachingNowInCalculusGrade7)@Html.Raw(gradeCaption(7))</label>
+                    <label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m=> m.TeachingNowInCalculusGrade8)@Html.Raw(gradeCaption(8))</label>
+                    <label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m=> m.TeachingNowInCalculusGrade9)@Html.Raw(gradeCaption(9))</label>
+                    <label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m=> m.TeachingNowInCalculusGrade10)@Html.Raw(gradeCaption(10))</label>
+                    <label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m=> m.TeachingNowInCalculusGrade11)@Html.Raw(gradeCaption(11))</label>
+                    <label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m=> m.TeachingNowInCalculusGrade12)@Html.Raw(gradeCaption(12))</label>
+                    <label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m=> m.TeachingNowInCalculusCollege)@Html.Raw(gradeCaption(13))</label>
                 </div>
 
                 <div class="form-group row">
                     <label class="@allColumns"><label asp-for="TeachingNowInOtherSpecified">Other:<input class="form-control" asp-for="TeachingNowInOtherSpecified" /></label></label>
-                    @for (var grade = 6; grade < SurveyResponse.GradeCount; grade++)
-                    {
-                        <label class="checkbox-inline @colByGrade(grade)"><input type="checkbox" asp-for="TeachingNowInOtherGrades[grade]">@Html.Raw(gradeCaption(grade))</label>
-                    }
+                    <label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m=> m.TeachingNowInOtherGrade6)@Html.Raw(gradeCaption(6))</label>
+                    <label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m=> m.TeachingNowInOtherGrade7)@Html.Raw(gradeCaption(7))</label>
+                    <label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m=> m.TeachingNowInOtherGrade8)@Html.Raw(gradeCaption(8))</label>
+                    <label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m=> m.TeachingNowInOtherGrade9)@Html.Raw(gradeCaption(9))</label>
+                    <label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m=> m.TeachingNowInOtherGrade10)@Html.Raw(gradeCaption(10))</label>
+                    <label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m=> m.TeachingNowInOtherGrade11)@Html.Raw(gradeCaption(11))</label>
+                    <label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m=> m.TeachingNowInOtherGrade12)@Html.Raw(gradeCaption(12))</label>
+                    <label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m=> m.TeachingNowInOtherCollege)@Html.Raw(gradeCaption(13))</label>
                 </div>
             </div>
         </div>
@@ -335,14 +385,14 @@
 
                 <div class="form-group">
                     <label>Check all that apply:</label>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="UsedMethodDiff2Squares">Difference of two squares</label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="UsedMethodQuadraticFormula">Quadratic formula</label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="UsedMethodGuessAndCheck">Guess and check</label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="UsedMethodCompletingSquare">Completing the square</label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="UsedMethodSquareOfBinomial">Square of binomial</label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="UsedMethodGrouping">Grouping</label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="UsedMethodCommonFactor">Greatest Common Factor of Monomials</label></div>
-                    <div class="checkbox"><label><input type="checkbox" asp-for="UsedMethodOther">Other</label></div>
+                    <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.UsedMethodDiff2Squares)Difference of two squares</label></div>
+                    <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.UsedMethodQuadraticFormula)Quadratic formula</label></div>
+                    <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.UsedMethodGuessAndCheck)Guess and check</label></div>
+                    <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.UsedMethodCompletingSquare)Completing the square</label></div>
+                    <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.UsedMethodSquareOfBinomial)Square of binomial</label></div>
+                    <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.UsedMethodGrouping)Grouping</label></div>
+                    <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.UsedMethodCommonFactor)Greatest Common Factor of Monomials</label></div>
+                    <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.UsedMethodOther)Other</label></div>
                     <input class="form-control" asp-for="UsedMethodOtherSpecified" placeholder="Other method(s)" />
                 </div>
 
@@ -357,53 +407,45 @@
             <div class="panel-body">
 
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="EvaluateMethodDiff2Squares">Difference of two squares:</label>
-                    @for (var scale = EnumOptions.EvalEffective; scale >= EnumOptions.EvalNotEffective; scale--)
-                    {
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="EvaluateMethodDiff2Squares" type="radio" name="eval1" >@effectiveScaleCaption(scale)</label>}
+                    <label class="@scalingLabel" asp-for="EvaluateMethodDiff2Squares">Difference of two squares:</label>
+                    @for (var scale = EnumOptions.EvalEffective; scale >= EnumOptions.EvalNotEffective; scale--){
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.EvaluateMethodDiff2Squares, @scale)@effectiveScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="EvaluateMethodQuadraticFormula">Quadratic formula:</label>
-                    @for (var scale = EnumOptions.EvalEffective; scale >= EnumOptions.EvalNotEffective; scale--)
-                    {
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="EvaluateMethodQuadraticFormula" type="radio" name="eval2" >@effectiveScaleCaption(scale)</label>}
+                    <label class="@scalingLabel" asp-for="EvaluateMethodQuadraticFormula">Quadratic formula:</label>
+                    @for (var scale = EnumOptions.EvalEffective; scale >= EnumOptions.EvalNotEffective; scale--){
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.EvaluateMethodQuadraticFormula, @scale)@effectiveScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="EvaluateMethodGuessAndCheck">Guess and check:</label>
-                    @for (var scale = EnumOptions.EvalEffective; scale >= EnumOptions.EvalNotEffective; scale--)
-                    {
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="EvaluateMethodGuessAndCheck" type="radio" name="eval3" >@effectiveScaleCaption(scale)</label>}
+                    <label class="@scalingLabel" asp-for="EvaluateMethodGuessAndCheck">Guess and check:</label>
+                    @for (var scale = EnumOptions.EvalEffective; scale >= EnumOptions.EvalNotEffective; scale--){
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.EvaluateMethodGuessAndCheck, @scale)@effectiveScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="EvaluateMethodCompletingSquare">Completing the square:</label>
-                    @for (var scale = EnumOptions.EvalEffective; scale >= EnumOptions.EvalNotEffective; scale--)
-                    {
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="EvaluateMethodCompletingSquare" type="radio" name="eval4" >@effectiveScaleCaption(scale)</label>}
+                    <label class="@scalingLabel" asp-for="EvaluateMethodCompletingSquare">Completing the square:</label>
+                    @for (var scale = EnumOptions.EvalEffective; scale >= EnumOptions.EvalNotEffective; scale--){
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.EvaluateMethodCompletingSquare, @scale)@effectiveScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="EvaluateMethodSquareOfBinomial">Square of binomial:</label>
-                    @for (var scale = EnumOptions.EvalEffective; scale >= EnumOptions.EvalNotEffective; scale--)
-                    {
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="EvaluateMethodSquareOfBinomial" type="radio" name="eval5" >@effectiveScaleCaption(scale)</label>}
+                    <label class="@scalingLabel" asp-for="EvaluateMethodSquareOfBinomial">Square of binomial:</label>
+                    @for (var scale = EnumOptions.EvalEffective; scale >= EnumOptions.EvalNotEffective; scale--){
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.EvaluateMethodSquareOfBinomial, @scale)@effectiveScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="EvaluateMethodGrouping">Grouping:</label>
-                    @for (var scale = EnumOptions.EvalEffective; scale >= EnumOptions.EvalNotEffective; scale--)
-                    {
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="EvaluateMethodGrouping" type="radio" name="eval6" >@effectiveScaleCaption(scale)</label>}
+                    <label class="@scalingLabel" asp-for="EvaluateMethodGrouping">Grouping:</label>
+                    @for (var scale = EnumOptions.EvalEffective; scale >= EnumOptions.EvalNotEffective; scale--){
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.EvaluateMethodGrouping, @scale)@effectiveScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="EvaluateMethodCommonFactor">Greatest Common Factor of Monomials:</label>
-                    @for (var scale = EnumOptions.EvalEffective; scale >= EnumOptions.EvalNotEffective; scale--)
-                    {
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="EvaluateMethodCommonFactor" type="radio" name="eval7" >@effectiveScaleCaption(scale)</label>}
+                    <label class="@scalingLabel" asp-for="EvaluateMethodCommonFactor">Greatest Common Factor of Monomials:</label>
+                    @for (var scale = EnumOptions.EvalEffective; scale >= EnumOptions.EvalNotEffective; scale--){
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.EvaluateMethodCommonFactor, @scale)@effectiveScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
                     <label class="@gridClassAllColumns" asp-for="EvaluateMethodOtherSpecified">Other method(s):</label>
-                    <div class="@scalingRadioLabelGridClass"><input class="form-control @scalingRadioLabelGridClass" asp-for="EvaluateMethodOtherSpecified" placeholder="Max 80 characters" /></div>
-                    @for (var scale = EnumOptions.EvalEffective; scale >= EnumOptions.EvalNotEffective; scale--)
-                    {
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="EvaluateMethodOther" type="radio" name="eval8" >@effectiveScaleCaption(scale)</label>}
+                    <div class="@scalingLabel"><input class="form-control @scalingLabel" asp-for="EvaluateMethodOtherSpecified" placeholder="Max 80 characters" /></div>
+                    @for (var scale = EnumOptions.EvalEffective; scale >= EnumOptions.EvalNotEffective; scale--){
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.EvaluateMethodOther, @scale)@effectiveScaleCaption(scale)</label>}
                 </div>
             </div>
 
@@ -423,13 +465,13 @@
                 <div class="form-group row">
                     <div class="checkbox @allRow"><label><input type="checkbox" asp-for="GraphsNotUsed">No, I do not</label></div>
                     <label class="@allRow">If yes, check all that apply:</label>
-                    <div class="checkbox @allRow"><label><input type="checkbox" asp-for="GraphsCheckSolutions">To check if the equation has no solutions, one solution or two solutions</label></div>
-                    <div class="checkbox @allRow"><label><input type="checkbox" asp-for="GraphsCheckWork">To check their work</label></div>
-                    <div class="checkbox @allRow"><label><input type="checkbox" asp-for="GraphsHelpGuess">To help students guess the solutions</label></div>
-                    <div class="checkbox @allRow"><label><input type="checkbox" asp-for="GraphsZeroOfParabola">To relate the solutions of the equation to the zeros of parabola</label></div>
-                    <div class="checkbox @allRow"><label><input type="checkbox" asp-for="GraphsFindMinMax">To show how to find min or max for the parabola by completing the squares</label></div>
-                    <div class="checkbox @allRow"><label><input type="checkbox" asp-for="GraphsShowConnections">To show the connections between functions and equations</label></div>
-                    <div class="checkbox @allRow"><label><input type="checkbox" asp-for="GraphsOther">Other:</label></div>
+                    <div class="checkbox @allRow"><label>@Html.CheckBoxFor(m=> m.GraphsCheckSolutions)To check if the equation has no solutions, one solution or two solutions</label></div>
+                    <div class="checkbox @allRow"><label>@Html.CheckBoxFor(m=> m.GraphsCheckWork)To check their work</label></div>
+                    <div class="checkbox @allRow"><label>@Html.CheckBoxFor(m=> m.GraphsHelpGuess)To help students guess the solutions</label></div>
+                    <div class="checkbox @allRow"><label>@Html.CheckBoxFor(m=> m.GraphsZeroOfParabola)To relate the solutions of the equation to the zeros of parabola</label></div>
+                    <div class="checkbox @allRow"><label>@Html.CheckBoxFor(m=> m.GraphsFindMinMax)To show how to find min or max for the parabola by completing the squares</label></div>
+                    <div class="checkbox @allRow"><label>@Html.CheckBoxFor(m=> m.GraphsShowConnections)To show the connections between functions and equations</label></div>
+                    <div class="checkbox @allRow"><label>@Html.CheckBoxFor(m=> m.GraphsOther)Other:</label></div>
                     <label class="@allRow"><input class="form-control" asp-for="RelateGraphsOtherSpecified" placeholder="Max 50 characters:" /></label>
                 </div>
 
@@ -466,13 +508,9 @@
                 </div>
                 <!-- question 21-->
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="TeachingSuccess">Are you successful in teching factorial trinomials:</label>
-                    @for (var scale = 5; scale >= 1; scale--)
-                    {
-                        <label class="radio-inline @scalingRadioInputGridClass">
-                            <input asp-for="TeachingSuccess" type="radio" name="TeachingSuccess" >@agreeScaleCaption(scale)
-                        </label>
-                    }
+                    <label class="@scalingLabel" asp-for="TeachingSuccess">Are you successful in teching factorial trinomials:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.TeachingSuccess, @scale)@agreeScaleCaption(scale)</label>}
                 </div>
 
             </div>
@@ -489,22 +527,14 @@
                 <!-- Question 22 -->
                 <div class="form-group row">
                     <label class="@allColumns" asp-for="ConfidentWithTechnology">I am familiar and confident with using technology in my classroom:</label>
-                    @for (var scale = 5; scale >= 1; scale--)
-                    {
-                        <label class="radio-inline @scalingRadioInputGridClass">
-                            <input asp-for="ConfidentWithTechnology" type="radio" name="confident" >@agreeScaleCaption(scale)
-                        </label>
-                    }
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.ConfidentWithTechnology, @scale)@agreeScaleCaption(scale)</label>}
                 </div>
                 <!-- Question 23 -->
                 <div class="form-group row">
                     <label class="@allColumns" asp-for="CanTechnologyBeMoreEffective">Technology can make teaching factorial trinomials more effective to teach/learn:</label>
-                    @for (var scale = 5; scale >= 1; scale--)
-                    {
-                        <label class="radio-inline @scalingRadioInputGridClass">
-                            <input asp-for="CanTechnologyBeMoreEffective" type="radio" name="effective" >@agreeScaleCaption(scale)
-                        </label>
-                    }
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.CanTechnologyBeMoreEffective, @scale)@agreeScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
                     <label asp-for="CanTechnologyBeEffectiveComment">Explain:</label>
@@ -522,80 +552,80 @@
             </div>
             <div class="panel-body">
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="AccessToGraphingCalculator">Graphing Calculator:</label>
+                    <label class="@scalingLabel" asp-for="AccessToGraphingCalculator">Graphing Calculator:</label>
                     @for (var scale = 5; scale >= 1; scale--) {
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="AccessToGraphingCalculator" type="radio" name="access1" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.AccessToGraphingCalculator, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="AccessToBlackboard">Blackboard:</label>
+                    <label class="@scalingLabel" asp-for="AccessToBlackboard">Blackboard:</label>
                     @for (var scale = 5; scale >= 1; scale--) {
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="AccessToBlackboard" type="radio" name="access2" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.AccessToBlackboard, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="AccessToIpad">iPad:</label>
+                    <label class="@scalingLabel" asp-for="AccessToIpad">iPad:</label>
                     @for (var scale = 5; scale >= 1; scale--) {
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="AccessToIpad" type="radio" name="access3" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.AccessToIpad, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="AccessToGames">Computer games:</label>
+                    <label class="@scalingLabel" asp-for="AccessToGames">Computer games:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="AccessToGames" type="radio" name="access4" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.AccessToGames, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="AccessToSmartBoards">SMART Boards:</label>
+                    <label class="@scalingLabel" asp-for="AccessToSmartBoards">SMART Boards:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="AccessToSmartBoards" type="radio" name="access5" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.AccessToSmartBoards, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="AccessToPresentationSoftware">Presentation software:</label>
+                    <label class="@scalingLabel" asp-for="AccessToPresentationSoftware">Presentation software:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="AccessToPresentationSoftware" type="radio" name="access6" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.AccessToPresentationSoftware, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="AccessToCloudSharing">Cloud Sharing:</label>
+                    <label class="@scalingLabel" asp-for="AccessToCloudSharing">Cloud Sharing:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="AccessToCloudSharing" type="radio" name="access7" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.AccessToCloudSharing, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="AccessToComputerizedTesting">Computerized Testing:</label>
+                    <label class="@scalingLabel" asp-for="AccessToComputerizedTesting">Computerized Testing:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="AccessToComputerizedTesting" type="radio" name="access8" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.AccessToComputerizedTesting, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="AccessToSocialMedia">Social Media:</label>
+                    <label class="@scalingLabel" asp-for="AccessToSocialMedia">Social Media:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="AccessToSocialMedia" type="radio" name="access9" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.AccessToSocialMedia, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="AccessToMultimediaProjector">Multimedia Projector:</label>
+                    <label class="@scalingLabel" asp-for="AccessToMultimediaProjector">Multimedia Projector:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="AccessToMultimediaProjector" type="radio" name="access10" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.AccessToMultimediaProjector, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="AccessToClassroomResponseSystem">Classroom Response System:</label>
+                    <label class="@scalingLabel" asp-for="AccessToClassroomResponseSystem">Classroom Response System:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="AccessToClassroomResponseSystem" type="radio" name="access11" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.AccessToClassroomResponseSystem, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="AccessToCAI">CAI (Computer-Assisted Instruction):</label>
+                    <label class="@scalingLabel" asp-for="AccessToCAI">CAI (Computer-Assisted Instruction):</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="AccessToCAI" type="radio" name="access12" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.AccessToCAI, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="AccessToOnlineProjects">Online Projects and Collaboration Tools:</label>
+                    <label class="@scalingLabel" asp-for="AccessToOnlineProjects">Online Projects and Collaboration Tools:</label>
                     @for (var scale = 5; scale >= 1; scale--) {
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="AccessToOnlineProjects" type="radio" name="access13" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.AccessToOnlineProjects, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="AccessToInformationVisualization">Information Visualization Tools:</label>
+                    <label class="@scalingLabel" asp-for="AccessToInformationVisualization">Information Visualization Tools:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="AccessToInformationVisualization" type="radio" name="access14" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.AccessToInformationVisualization, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
                     <label class="@gridClassAllColumns" asp-for="AccessToOther">Other:</label>
-                    <div class="@scalingRadioLabelGridClass"><input class="form-control" asp-for="AccessToOtherSpecified" placeholder="Max 120 characters" /></div>
+                    <div class="@scalingLabel"><input class="form-control" asp-for="AccessToOtherSpecified" placeholder="Max 120 characters" /></div>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="AccessToOther" type="radio" name="access15" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.AccessToOther, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
             </div>
 
@@ -609,80 +639,80 @@
             </div>
             <div class="panel-body">
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="IncorporateGraphingCalculator">Graphing Calculator:</label>
+                    <label class="@scalingLabel" asp-for="IncorporateGraphingCalculator">Graphing Calculator:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="IncorporateGraphingCalculator" type="radio" name="incorp1" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.IncorporateGraphingCalculator, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="IncorporateBlackboard">Blackboard:</label>
+                    <label class="@scalingLabel" asp-for="IncorporateBlackboard">Blackboard:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="IncorporateBlackboard" type="radio" name="incorp2" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.IncorporateBlackboard, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="IncorporateIpad">iPad:</label>
+                    <label class="@scalingLabel" asp-for="IncorporateIpad">iPad:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="IncorporateIpad" type="radio" name="incorp3" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.IncorporateIpad, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="IncorporateGames">Computer games:</label>
+                    <label class="@scalingLabel" asp-for="IncorporateGames">Computer games:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="IncorporateGames" type="radio" name="incorp4" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.IncorporateGames, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="IncorporateSmartBoards">SMART Boards:</label>
+                    <label class="@scalingLabel" asp-for="IncorporateSmartBoards">SMART Boards:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="IncorporateSmartBoards" type="radio" name="incorp5" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.IncorporateSmartBoards, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="IncorporatePresentationSoftware">Presentation software:</label>
+                    <label class="@scalingLabel" asp-for="IncorporatePresentationSoftware">Presentation software:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="IncorporatePresentationSoftware" type="radio" name="incorp6" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.IncorporatePresentationSoftware, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="IncorporateCloudSharing">Cloud Sharing:</label>
+                    <label class="@scalingLabel" asp-for="IncorporateCloudSharing">Cloud Sharing:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="IncorporateCloudSharing" type="radio" name="incorp7" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.IncorporateCloudSharing, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="IncorporateComputerizedTesting">Computerized Testing:</label>
+                    <label class="@scalingLabel" asp-for="IncorporateComputerizedTesting">Computerized Testing:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="IncorporateComputerizedTesting" type="radio" name="incorp8" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.IncorporateComputerizedTesting, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="IncorporateSocialMedia">Social Media:</label>
+                    <label class="@scalingLabel" asp-for="IncorporateSocialMedia">Social Media:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="IncorporateSocialMedia" type="radio" name="incorp9" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.IncorporateSocialMedia, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="IncorporateMultimediaProjector">Multimedia Projector:</label>
+                    <label class="@scalingLabel" asp-for="IncorporateMultimediaProjector">Multimedia Projector:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="IncorporateMultimediaProjector" type="radio" name="incorp10" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.IncorporateMultimediaProjector, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="IncorporateClassroomResponseSystem">Classroom Response System:</label>
+                    <label class="@scalingLabel" asp-for="IncorporateClassroomResponseSystem">Classroom Response System:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="IncorporateClassroomResponseSystem" type="radio" name="incorp11" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.IncorporateClassroomResponseSystem, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="IncorporateCAI">CAI (Computer-Assisted Instruction):</label>
+                    <label class="@scalingLabel" asp-for="IncorporateCAI">CAI (Computer-Assisted Instruction):</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="IncorporateCAI" type="radio" name="incorp12" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.IncorporateCAI, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="IncorporateOnlineProjects">Online Projects and Collaboration Tools:</label>
+                    <label class="@scalingLabel" asp-for="IncorporateOnlineProjects">Online Projects and Collaboration Tools:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="IncorporateOnlineProjects" type="radio" name="incorp13" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.IncorporateOnlineProjects, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="IncorporateInformationVisualization">Information Visualization Tools:</label>
+                    <label class="@scalingLabel" asp-for="IncorporateInformationVisualization">Information Visualization Tools:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="IncorporateInformationVisualization" type="radio" name="incorp14" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.IncorporateInformationVisualization, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
                     <label class="@gridClassAllColumns" asp-for="IncorporateOther">Other:</label>
-                    <div class="@scalingRadioLabelGridClass"><input class="form-control" asp-for="IncorporateOtherSpecified" placeholder="Max 120 characters" /></div>
+                    <div class="@scalingLabel"><input class="form-control" asp-for="IncorporateOtherSpecified" placeholder="Max 120 characters" /></div>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="IncorporateOther" type="radio" name="incorp15" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.IncorporateOther, @scale)@alwaysScaleCaption(scale)</label>}
                     </div>
             </div>
 
@@ -695,45 +725,45 @@
             </div>
             <div class="panel-body">
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="UseToDifferenceOfSquares">Difference of Squares:</label>
+                    <label class="@scalingLabel" asp-for="UseToDifferenceOfSquares">Difference of Squares:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="UseToDifferenceOfSquares" type="radio" name="method7" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.UseToDifferenceOfSquares, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="UseToQuadraticFormula">Quadratic Formula:</label>
+                    <label class="@scalingLabel" asp-for="UseToQuadraticFormula">Quadratic Formula:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="UseToQuadraticFormula" type="radio" name="method8" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.UseToQuadraticFormula, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="UseToGuessAndCheck">Guess and Check:</label>
+                    <label class="@scalingLabel" asp-for="UseToGuessAndCheck">Guess and Check:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="UseToGuessAndCheck" type="radio" name="method9" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.UseToGuessAndCheck, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="UseToCompleteSquare">Completing the Square:</label>
+                    <label class="@scalingLabel" asp-for="UseToCompleteSquare">Completing the Square:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="UseToCompleteSquare" type="radio" name="method10" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.UseToCompleteSquare, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="UseToSquareOfBinomial">Square of Binomial:</label>
+                    <label class="@scalingLabel" asp-for="UseToSquareOfBinomial">Square of Binomial:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="UseToSquareOfBinomial" type="radio" name="method11" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.UseToSquareOfBinomial, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="UseToGrouping">Grouping:</label>
+                    <label class="@scalingLabel" asp-for="UseToGrouping">Grouping:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="UseToGrouping" type="radio" name="method12" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.UseToGrouping, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="UseToCommonFactor">Greatest Common Factor of Monomials:</label>
+                    <label class="@scalingLabel" asp-for="UseToCommonFactor">Greatest Common Factor of Monomials:</label>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="UseToCommonFactor" type="radio" name="method13" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.UseToCommonFactor, @scale)@alwaysScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
                     <label class="@gridClassAllColumns" asp-for="UseToOtherSpecified">Other:</label>
-                    <div class="@scalingRadioLabelGridClass"><input class="form-control" asp-for="UseToOtherSpecified" placeholder="Max 80 characters" /></div>
+                    <div class="@scalingLabel"><input class="form-control" asp-for="UseToOtherSpecified" placeholder="Max 80 characters" /></div>
                     @for (var scale = 5; scale >= 1; scale--){
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="UseToOther" type="radio" name="method15" >@alwaysScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.UseToOther, @scale)@alwaysScaleCaption(scale)</label>}
                     </div>
             </div>
 
@@ -746,77 +776,75 @@
             </div>
             <div class="panel-body">
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="GoalToComplyToPrincipal">To comply to my principal's requests:</label>
-                    @for (var scale = 5; scale >= 1; scale--)
-                    {
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="GoalToComplyToPrincipal" type="radio" name="goal1" >@agreeScaleCaption(scale)</label>}
+                    <label class="@scalingLabel" asp-for="GoalToComplyToPrincipal">To comply to my principal's requests:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.GoalToComplyToPrincipal, @scale)@agreeScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="GoalToPresentProblems">To present/simulate problems:</label>
-                    @for (var scale = 5; scale >= 1; scale--)
-                    {
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="GoalToPresentProblems" type="radio" name="goal2" >@agreeScaleCaption(scale)</label>}
+                    <label class="@scalingLabel" asp-for="GoalToPresentProblems">To present/simulate problems:</label>
+                    @for (var scale = 5; scale >= 1; scale--){
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.GoalToPresentProblems, @scale)@agreeScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="GoalToComputations">To perform computations without mistakes:</label>
+                    <label class="@scalingLabel" asp-for="GoalToComputations">To perform computations without mistakes:</label>
                     @for (var scale = 5; scale >= 1; scale--)
                     {
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="GoalToComputations" type="radio" name="goal3" >@agreeScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.GoalToComputations, @scale)@agreeScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="GoalToGraph">To graph:</label>
+                    <label class="@scalingLabel" asp-for="GoalToGraph">To graph:</label>
                     @for (var scale = 5; scale >= 1; scale--)
                     {
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="GoalToGraph" type="radio" name="goal4" >@agreeScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.GoalToGraph, @scale)@agreeScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="GoalToCheckAnswers">To check answers:</label>
+                    <label class="@scalingLabel" asp-for="GoalToCheckAnswers">To check answers:</label>
                     @for (var scale = 5; scale >= 1; scale--)
                     {
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="GoalToCheckAnswers" type="radio" name="goal5" >@agreeScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.GoalToCheckAnswers, @scale)@agreeScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="GoalToStudentKnowledge">To access students' knowledge:</label>
+                    <label class="@scalingLabel" asp-for="GoalToStudentKnowledge">To access students' knowledge:</label>
                     @for (var scale = 5; scale >= 1; scale--)
                     {
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="GoalToStudentKnowledge" type="radio" name="goal6" >@agreeScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.GoalToStudentKnowledge, @scale)@agreeScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="GoalToCommunicate">To communicate:</label>
+                    <label class="@scalingLabel" asp-for="GoalToCommunicate">To communicate:</label>
                     @for (var scale = 5; scale >= 1; scale--)
                     {
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="GoalToCommunicate" type="radio" name="goal7" >@agreeScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.GoalToCommunicate, @scale)@agreeScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="GoalToEngageStudents">To engage students:</label>
+                    <label class="@scalingLabel" asp-for="GoalToEngageStudents">To engage students:</label>
                     @for (var scale = 5; scale >= 1; scale--)
                     {
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="GoalToEngageStudents" type="radio" name="goal8" >@agreeScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.GoalToEngageStudents, @scale)@agreeScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="GoalToIndividualizeLearning">To individualize learning:</label>
+                    <label class="@scalingLabel" asp-for="GoalToIndividualizeLearning">To individualize learning:</label>
                     @for (var scale = 5; scale >= 1; scale--)
                     {
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="GoalToIndividualizeLearning" type="radio" name="goal9" >@agreeScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.GoalToIndividualizeLearning, @scale)@agreeScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="GoalToDifferentReprentations">To introduce different representations of functions:</label>
+                    <label class="@scalingLabel" asp-for="GoalToDifferentReprentations">To introduce different representations of functions:</label>
                     @for (var scale = 5; scale >= 1; scale--)
                     {
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="GoalToDifferentReprentations" type="radio" name="goal10" >@agreeScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.GoalToDifferentReprentations, @scale)@agreeScaleCaption(scale)</label>}
                 </div>
                 <div class="form-group row">
-                    <label class="@scalingRadioLabelGridClass" asp-for="GoalToTeachTechnology">To teach students how to use technology:</label>
+                    <label class="@scalingLabel" asp-for="GoalToTeachTechnology">To teach students how to use technology:</label>
                     @for (var scale = 5; scale >= 1; scale--)
                     {
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="GoalToTeachTechnology" type="radio" name="goal11" >@agreeScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.GoalToTeachTechnology, @scale)@agreeScaleCaption(scale)</label>}
                 </div>
                  <div class="form-group row">
                     <label class="@gridClassAllColumns" asp-for="GoalToOtherSpecified">Other:</label>
-                    <div class="@scalingRadioLabelGridClass"><input class="form-control @scalingRadioLabelGridClass" asp-for="GoalToOtherSpecified" placeholder="Max 80 characters" /></div>
+                    <div class="@scalingLabel"><input class="form-control @scalingLabel" asp-for="GoalToOtherSpecified" placeholder="Max 80 characters" /></div>
                     @for (var scale = 5; scale >= 1; scale--)
                     {
-                        <label class="radio-inline @scalingRadioInputGridClass"><input asp-for="GoalToOther" type="radio" name="goal12" >@agreeScaleCaption(scale)</label>}
+                        <label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m => m.GoalToOther, @scale)@agreeScaleCaption(scale)</label>}
                 </div>
             </div>
 
@@ -832,7 +860,7 @@
 		<p><br /></p>
     </form>
 
-    <!-- This section prevents the Enter from submitting the form -->
+    <!-- This section prevents the Enter key from submitting the form -->
     <script src="http://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
             crossorigin="anonymous"></script>

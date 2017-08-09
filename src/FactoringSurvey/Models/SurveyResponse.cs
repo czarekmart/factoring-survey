@@ -12,6 +12,7 @@ namespace FactoringSurvey.Models
 		public const int MaxCommentLength = 240;
 		public const int GradeCount = 13 + 1;
 
+		public DateTime SurveyTime							{ get; set; }
 
 		// Part 1-11
 

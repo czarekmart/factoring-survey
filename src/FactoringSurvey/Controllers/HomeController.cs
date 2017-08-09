@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using FactoringSurvey.Models;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 
 namespace FactoringSurvey.Controllers
 {
@@ -12,12 +13,14 @@ namespace FactoringSurvey.Controllers
     {
 		private ISurveyRepository _repository;
 		private IHostingEnvironment _hostingEnvironment;
+		private IConfiguration _configuration;
 
-		public HomeController(ISurveyRepository repo, IHostingEnvironment hostingEnvironment)
+		public HomeController(ISurveyRepository repo, IHostingEnvironment hostingEnvironment, IConfiguration configuration)
 		{
 			_repository = repo;
 			_hostingEnvironment = hostingEnvironment;
-			_repository.SetHostingEnvironment(hostingEnvironment);
+			_configuration = configuration;
+			_repository.Configure(hostingEnvironment, configuration);
 		}
 
         public ViewResult Index()

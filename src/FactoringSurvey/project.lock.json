@@ -43,10 +43,10 @@
           }
         }
       },
-      "MailKit/1.16.2": {
+      "MailKit/1.16.0": {
         "type": "package",
         "dependencies": {
-          "MimeKit": "1.16.2",
+          "MimeKit": "1.16.0",
           "NETStandard.Library": "1.6.1",
           "Portable.BouncyCastle": "1.8.1.2",
           "System.Data.Common": "4.3.0",
@@ -1708,7 +1708,7 @@
           }
         }
       },
-      "MimeKit/1.16.2": {
+      "MimeKit/1.16.0": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1",
@@ -4345,12 +4345,12 @@
         "runtimes/win7-x86/native/libuv.dll"
       ]
     },
-    "MailKit/1.16.2": {
-      "sha512": "+TmqWZlDbON05CpqiH6N++LUtqwW6SjUzc526srAogqJvjeTuAYN6vni5jc+riNBc3CFKS23VlyYqOxlZ943IA==",
+    "MailKit/1.16.0": {
+      "sha512": "/hqkJRE6B0aRqM+FQB0tZBk5iO+fbSOcRxkZy1BYwHcBMoAUkr89Acl2G4Q7U5DE6JLaNUZTgIJNH0c9w+UhJw==",
       "type": "package",
-      "path": "MailKit/1.16.2",
+      "path": "MailKit/1.16.0",
       "files": [
-        "MailKit.1.16.2.nupkg.sha512",
+        "MailKit.1.16.0.nupkg.sha512",
         "MailKit.nuspec",
         "lib/MonoAndroid10/MailKit.dll",
         "lib/MonoAndroid10/MailKit.xml",
@@ -5739,12 +5739,12 @@
         "runtimes/win/lib/netstandard1.3/Microsoft.Win32.Registry.dll"
       ]
     },
-    "MimeKit/1.16.2": {
-      "sha512": "n/yoKMfFXUSUzQPz+wvl+eArDA01XntJ3z40DBUduAEpx8QXEpLMRhr177Lwi23dHRA4/aDqb3+X2b6r/X/1hw==",
+    "MimeKit/1.16.0": {
+      "sha512": "xPP/v/Wf99MaHp9Efv+iKcKCVmQ5IjYZXwP1OmUc4Sn3Emxl+XiW5zGSA4h2CxJQxFLcRu2r40cpKRQndtAB9Q==",
       "type": "package",
-      "path": "MimeKit/1.16.2",
+      "path": "MimeKit/1.16.0",
       "files": [
-        "MimeKit.1.16.2.nupkg.sha512",
+        "MimeKit.1.16.0.nupkg.sha512",
         "MimeKit.nuspec",
         "lib/MonoAndroid10/BouncyCastle.dll",
         "lib/MonoAndroid10/MimeKit.dll",
@@ -11031,7 +11031,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "MailKit >= 1.16.2",
+      "MailKit >= 1.16.0",
       "Microsoft.AspNetCore.Diagnostics >= 1.0.0",
       "Microsoft.AspNetCore.Mvc >= 1.0.1",
       "Microsoft.AspNetCore.Razor.Tools >= 1.0.0-preview2-final",

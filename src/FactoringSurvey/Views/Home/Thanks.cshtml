@@ -15,24 +15,12 @@
 </head>
 <body class="text-center">
 
-    <p>
-        <h3>Thank you, @Model.Name!</h3>
-        @if (Model.Gender == EnumOptions.GenderFemale)
-        {
-            @:Really smart, Madam!
-        }
-        else if (Model.Gender == EnumOptions.GenderMale)
-        {
-            @:Way to go dude!
-        }
-        else
-        {
-            @:Whatever! Have fun in @Model.Country!
-        }
-    </p>
+    <div class="alert alert-success">
+        <h3>Thank you, @Model.Name, for your time!</h3>
+    </div>
 
     <p>
-        Click <a class="navbar-link" asp-action="SurveyForm(@Model)">here</a> to return to survey.
+        Click <a class="navbar-link" asp-action="SurveyForm"><strong>here</strong></a> to return to survey.
     </p>
 
 </body>

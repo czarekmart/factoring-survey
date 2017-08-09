@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,7 +9,7 @@ namespace FactoringSurvey.Models
     {
 		IEnumerable<SurveyResponse> GetResponses();
 		void AddResponse(SurveyResponse response) ;
-		void SetHostingEnvironment(IHostingEnvironment hostingEnvironment);
+		void Configure(Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment, Microsoft.Extensions.Configuration.IConfiguration configuration);
 		string GetRepoPath();
     }
 }

@@ -3,7 +3,9 @@
 src/FactoringSurvey/bin/
 src/FactoringSurvey/obj/
 src/FactoringSurvey/FactoringSurvey.xproj.user
-src/FileRepository/*.json
+src/FactoringSurvey/wwwroot/repo/*.json
+src/FactoringSurvey/project.lock.json
+
 
 
 

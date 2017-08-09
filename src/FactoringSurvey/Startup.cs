@@ -40,6 +40,7 @@ namespace FactoringSurvey
 				options.UseSqlServer(
 					Configuration["Data:SurveyResponses:ConnectionString"]));
 			services.AddTransient<ISurveyRepository, SurveyFileRepository>();
+			services.AddSingleton<IConfiguration>(Configuration);
 
         }
 

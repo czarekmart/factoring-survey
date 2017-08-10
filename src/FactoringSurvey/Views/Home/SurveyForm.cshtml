@@ -111,8 +111,26 @@
         .nobold {
             font-weight:normal;
         }
+
+		.nobold label {
+			font-weight:normal;
+		}
 		input.form-control {
             font-weight:normal;
+		}
+
+		.primary-question {
+            font-weight:700;
+			margin-left:0;
+			padding-left:0;
+		}
+		.secondary-question {
+            font-weight:400;
+			margin-left:4px;
+			padding-left:0;
+		}
+		.secondary-question label {
+			font-weight:normal;
 		}
 
     </style>
@@ -120,63 +138,64 @@
 
 </head>
 <body>
-    <div class="panel panel-info container">
+    <div class="panel panel-success container">
         <div class="panel-heading text-center">
             Survey
         </div>
-        <div class="panel-body text-center alert-info">
+        <div class="panel-body text-center">
             <em>For teachers, educators and researchers who have an opinion about teaching factoring trinomials</em>
         </div>
     </div>
 
     <form class="p-a-1" asp-action="SurveyForm" method="post">
 
-        <div class="panel panel-primary container">
-            <div class="panel-heading text-left">
-                Your Background
-            </div>
-            <div class="panel-body">
-                <div asp-validation-summary="All"></div>
+        <div asp-validation-summary="All"></div>
 
-                <div class="form-group">
-                    <label asp-for="Name">Your name:</label>
+		<div class="panel panel-primary container">
+			<div class="panel-heading text-left">
+				Part 1. Background information
+			</div>
+            <div class="panel-body">
+
+                <div class="form-group row">
+                    <label asp-for="Name" class="primary-question">1. Your name:</label>
                     <input class="form-control" asp-for="Name" placeholder="Your name" />
                 </div>
 
-                <div class="form-group">
-                    <label asp-for="Country">Your country:</label>
+                <div class="form-group row">
+                    <label asp-for="Country" class="primary-question">2. Your country:</label>
                     <input class="form-control" asp-for="Country" placeholder="Your country" />
                 </div>
 
-                <div class="form-group">
-                    <label asp-for="Email">Your email:</label>
+                <div class="form-group row">
+                    <label asp-for="Email" class="primary-question">3. Your email:</label>
                     <input type="email" class="form-control" asp-for="Email" placeholder="Your email" />
                 </div>
 
                 <div class="form-group row">
-                    <label class="@gridClassAllColumns" asp-for="Gender">Your gender:</label>
+                    <label class="@gridClassAllColumns primary-question" asp-for="Gender">4. Your gender:</label>
                     @foreach (var opt in EnumOptions.Genders){
                         <label class="radio-inline col-lg-1 col-md-2 col-sm-12 col-xs-12">@Html.RadioButtonFor(m=>m.Gender, @opt.Value)@opt.Description</label>}
                 </div>
 
                 <div class="form-group row">
-                    <label class="@gridClassAllColumns" asp-for="Age">Your age:</label>
+                    <label class="@gridClassAllColumns primary-question" asp-for="Age">5. Your age:</label>
                     @foreach (var opt in EnumOptions.Ages){
                         <label class="radio-inline col-lg-1 col-md-2 col-sm-12 col-xs-12">@Html.RadioButtonFor(m=>m.Age, @opt.Value)@opt.Description</label>}
                 </div>
 
-                <div class="form-group">
-                    <label asp-for="SchoolName">Your current school name:</label>
+                <div class="form-group row">
+                    <label asp-for="SchoolName" class="primary-question">6. Your current school name:</label>
                     <input class="form-control" asp-for="SchoolName" placeholder="Current school name" />
                 </div>
 
-                <div class="form-group">
-                    <label asp-for="MathQualification">Your highest qualification to teach mathematics:</label>
+                <div class="form-group row">
+                    <label asp-for="MathQualification" class="primary-question">7. Your highest qualification to teach mathematics:</label>
                     <input class="form-control" asp-for="MathQualification" placeholder="Your qualification" />
                 </div>
 
-                <div class="form-group">
-                    <label>Which of the following university level courses did you take before becoming a mathematics teacher (check all that apply):</label>
+                <div class="form-group row">
+                    <label class="primary-question">8. Which of the following university level courses did you take before becoming a mathematics teacher (check all that apply):</label>
                     <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TookMathForSecondary)Math for secondary teachers</label></div>
                     <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TookMathForHighSchool)Math for high school</label></div>
                     <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TookGeometryForTeachers)Geometry for teachers</label></div>
@@ -189,25 +208,25 @@
                     <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TookAbstractAlgebra)Abstract Algebra</label></div>
                 </div>
 
-                <div class="form-group">
-                    <label asp-for="YearsOfTeachingMath">Years of teaching mathematics:<input class="form-control" asp-for="YearsOfTeachingMath" placeholder="Years of teaching math" /></label>
+                <div class="form-group row">
+                    <label asp-for="YearsOfTeachingMath" class="primary-question">9. How many years have you taught mathematics?<input class="form-control" asp-for="YearsOfTeachingMath" placeholder="Years of teaching math" /></label>
                     
                 </div>
 
                 <div class="form-group row">
-                    <label class="@gridClassAllColumns">What grade have you taught mathematics (check all that apply):</label>
-                    <label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m=> m.TaughtGrade6)@Html.Raw(gradeCaption(6))</label>
-                    <label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m=> m.TaughtGrade7)@Html.Raw(gradeCaption(7))</label>
-                    <label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m=> m.TaughtGrade8)@Html.Raw(gradeCaption(8))</label>
-                    <label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m=> m.TaughtGrade9)@Html.Raw(gradeCaption(9))</label>
-                    <label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m=> m.TaughtGrade10)@Html.Raw(gradeCaption(10))</label>
-                    <label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m=> m.TaughtGrade11)@Html.Raw(gradeCaption(11))</label>
-                    <label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m=> m.TaughtGrade12)@Html.Raw(gradeCaption(12))</label>
-                    <label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m=> m.TaughtCollege)@Html.Raw(gradeCaption(13))</label>
+                    <label class="@gridClassAllColumns primary-question">10. What grade have you taught mathematics (check all that apply):</label>
+                    <div class="checkbox"> <label>@Html.CheckBoxFor(m => m.TaughtGrade6)@Html.Raw(gradeCaption(6))</label></div>
+                    <div class="checkbox"> <label>@Html.CheckBoxFor(m => m.TaughtGrade7)@Html.Raw(gradeCaption(7))</label></div>
+                    <div class="checkbox"> <label>@Html.CheckBoxFor(m => m.TaughtGrade8)@Html.Raw(gradeCaption(8))</label></div>
+                    <div class="checkbox"> <label>@Html.CheckBoxFor(m => m.TaughtGrade9)@Html.Raw(gradeCaption(9))</label></div>
+                    <div class="checkbox"> <label>@Html.CheckBoxFor(m => m.TaughtGrade10)@Html.Raw(gradeCaption(10))</label></div>
+                    <div class="checkbox"> <label>@Html.CheckBoxFor(m => m.TaughtGrade11)@Html.Raw(gradeCaption(11))</label></div>
+                    <div class="checkbox"> <label>@Html.CheckBoxFor(m => m.TaughtGrade12)@Html.Raw(gradeCaption(12))</label></div>
+                    <div class="checkbox"> <label>@Html.CheckBoxFor(m => m.TaughtCollege)@Html.Raw(gradeCaption(13))</label></div>
                 </div>
 
-                <div class="form-group">
-                    <label>What course(s) are you currently teaching (check all that apply):</label>
+                <div class="form-group row">
+                    <label class="primary-question">11. What course(s) are you currently teaching (check all that apply):</label>
                     <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TeachingCourseBasic)Basic Math</label></div>
                     <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TeachingCoursePreAlgebra)Pre-Algebra</label></div>
                     <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TeachingCourseAlgebra1)Algebra 1</label></div>
@@ -216,101 +235,100 @@
                     <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TeachingCoursePreCalculus)Pre-Calculus</label></div>
                     <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TeachingCourseCalculus)Calculus</label></div>
                     <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.TeachingCourseProbability)Probability and Statistics</label></div>
-                    <label asp-for="CourseOther">Other:</label>
+                    <label asp-for="CourseOther"class="nobold">Other:</label>
                     <input class="form-control" asp-for="CourseOther" placeholder="Other course(s)" />
                 </div>
             </div>
         </div>
 
-        <div class="panel panel-primary container">
-            <div class="panel-heading text-left">
-                How many years have you taught trinomials?
-            </div>
-            <div class="panel-body">
-
-                <!-- Question 12 -->
-                <div class="form-group row">
-                    <label class="checkbox @gridClassAllColumns">@Html.CheckBoxFor(m=> m.NotTaughtTrinomials)No, I have not taught factoring trinomials before</label>
-                    <label class="@gridClassAllColumns nobold">If yes, put numbers of years next to courses below and corresponding grade levels.</label>
-                </div>
-                <div class="form-group row">
-                    <label asp-for="TaughtFactoringInAlgebra1Years">Algebra 1 (# of years):<input class="form-control" asp-for="TaughtFactoringInAlgebra1Years" /></label>
-                    <label class="@allColumns nobold">Specify grades:</label>
-
-                    <label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m=> m.TaughtInAlgebra1Grade6)@Html.Raw(gradeCaption(6))</label>
-                    <label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m=> m.TaughtInAlgebra1Grade7)@Html.Raw(gradeCaption(7))</label>
-                    <label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m=> m.TaughtInAlgebra1Grade8)@Html.Raw(gradeCaption(8))</label>
-                    <label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m=> m.TaughtInAlgebra1Grade9)@Html.Raw(gradeCaption(9))</label>
-                    <label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m=> m.TaughtInAlgebra1Grade10)@Html.Raw(gradeCaption(10))</label>
-                    <label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m=> m.TaughtInAlgebra1Grade11)@Html.Raw(gradeCaption(11))</label>
-                    <label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m=> m.TaughtInAlgebra1Grade12)@Html.Raw(gradeCaption(12))</label>
-                    <label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m=> m.TaughtInAlgebra1College)@Html.Raw(gradeCaption(13))</label>
-                </div>
+		<div class="panel panel-primary container">
+			<div class="panel-heading text-left">
+				Part 2. Teaching factoring trinomials: current and past experience of teachers.
+			</div>
+			<div class="panel-body">
 
                 <div class="form-group row">
-                    <label asp-for="TaughtFactoringInAlgebra2Years">Algebra 2 (# of years):<input class="form-control" asp-for="TaughtFactoringInAlgebra2Years" /></label>
-                    <label class="@allColumns nobold">Specify grades:</label>
-                    <label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m=> m.TaughtInAlgebra2Grade6)@Html.Raw(gradeCaption(6))</label>
-                    <label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m=> m.TaughtInAlgebra2Grade7)@Html.Raw(gradeCaption(7))</label>
-                    <label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m=> m.TaughtInAlgebra2Grade8)@Html.Raw(gradeCaption(8))</label>
-                    <label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m=> m.TaughtInAlgebra2Grade9)@Html.Raw(gradeCaption(9))</label>
-                    <label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m=> m.TaughtInAlgebra2Grade10)@Html.Raw(gradeCaption(10))</label>
-                    <label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m=> m.TaughtInAlgebra2Grade11)@Html.Raw(gradeCaption(11))</label>
-                    <label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m=> m.TaughtInAlgebra2Grade12)@Html.Raw(gradeCaption(12))</label>
-                    <label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m=> m.TaughtInAlgebra2College)@Html.Raw(gradeCaption(13))</label>
-                </div>
+					<label class="primary-question">12. How many years have you taught trinomials?</label>
+				</div>
+
+				<div class="form-group row secondary-question">
+					<div class="checkbox"><label>@Html.CheckBoxFor(m => m.NotTaughtTrinomials)No, I have not taught factoring trinomials before</label></div>
+					<label class="@gridClassAllColumns nobold">If yes, put numbers of years next to courses below and corresponding grade levels:</label>
+				</div>
+				<div class="form-group row secondary-question">
+					<label asp-for="TaughtFactoringInAlgebra1Years">Algebra 1 (# of years):<input class="form-control" asp-for="TaughtFactoringInAlgebra1Years" /></label>
+					<label class="@allColumns">Specify grades:</label>
+
+					<label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m => m.TaughtInAlgebra1Grade6)@Html.Raw(gradeCaption(6))</label>
+					<label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m => m.TaughtInAlgebra1Grade7)@Html.Raw(gradeCaption(7))</label>
+					<label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m => m.TaughtInAlgebra1Grade8)@Html.Raw(gradeCaption(8))</label>
+					<label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m => m.TaughtInAlgebra1Grade9)@Html.Raw(gradeCaption(9))</label>
+					<label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m => m.TaughtInAlgebra1Grade10)@Html.Raw(gradeCaption(10))</label>
+					<label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m => m.TaughtInAlgebra1Grade11)@Html.Raw(gradeCaption(11))</label>
+					<label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m => m.TaughtInAlgebra1Grade12)@Html.Raw(gradeCaption(12))</label>
+					<label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m => m.TaughtInAlgebra1College)@Html.Raw(gradeCaption(13))</label>
+				</div>
+
+				<div class="form-group row secondary-question">
+					<label asp-for="TaughtFactoringInAlgebra2Years">Algebra 2 (# of years):<input class="form-control" asp-for="TaughtFactoringInAlgebra2Years" /></label>
+					<label class="@allColumns">Specify grades:</label>
+					<label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m => m.TaughtInAlgebra2Grade6)@Html.Raw(gradeCaption(6))</label>
+					<label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m => m.TaughtInAlgebra2Grade7)@Html.Raw(gradeCaption(7))</label>
+					<label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m => m.TaughtInAlgebra2Grade8)@Html.Raw(gradeCaption(8))</label>
+					<label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m => m.TaughtInAlgebra2Grade9)@Html.Raw(gradeCaption(9))</label>
+					<label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m => m.TaughtInAlgebra2Grade10)@Html.Raw(gradeCaption(10))</label>
+					<label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m => m.TaughtInAlgebra2Grade11)@Html.Raw(gradeCaption(11))</label>
+					<label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m => m.TaughtInAlgebra2Grade12)@Html.Raw(gradeCaption(12))</label>
+					<label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m => m.TaughtInAlgebra2College)@Html.Raw(gradeCaption(13))</label>
+				</div>
+
+				<div class="form-group row secondary-question">
+					<label asp-for="TaughtFactoringInPrecalculusYears">Pre-Calculus (# of years):<input class="form-control" asp-for="TaughtFactoringInPrecalculusYears" /></label>
+					<label class="@allColumns">Specify grades:</label>
+					<label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m => m.TaughtInPrecalculusGrade6)@Html.Raw(gradeCaption(6))</label>
+					<label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m => m.TaughtInPrecalculusGrade7)@Html.Raw(gradeCaption(7))</label>
+					<label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m => m.TaughtInPrecalculusGrade8)@Html.Raw(gradeCaption(8))</label>
+					<label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m => m.TaughtInPrecalculusGrade9)@Html.Raw(gradeCaption(9))</label>
+					<label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m => m.TaughtInPrecalculusGrade10)@Html.Raw(gradeCaption(10))</label>
+					<label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m => m.TaughtInPrecalculusGrade11)@Html.Raw(gradeCaption(11))</label>
+					<label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m => m.TaughtInPrecalculusGrade12)@Html.Raw(gradeCaption(12))</label>
+					<label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m => m.TaughtInPrecalculusCollege)@Html.Raw(gradeCaption(13))</label>
+				</div>
+
+				<div class="form-group row secondary-question">
+					<label asp-for="TaughtFactoringInCalculusYears">Calculus (# of years):<input class="form-control" asp-for="TaughtFactoringInCalculusYears" /></label>
+					<label class="@allColumns">Specify grades:</label>
+					<label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m => m.TaughtInCalculusGrade6)@Html.Raw(gradeCaption(6))</label>
+					<label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m => m.TaughtInCalculusGrade7)@Html.Raw(gradeCaption(7))</label>
+					<label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m => m.TaughtInCalculusGrade8)@Html.Raw(gradeCaption(8))</label>
+					<label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m => m.TaughtInCalculusGrade9)@Html.Raw(gradeCaption(9))</label>
+					<label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m => m.TaughtInCalculusGrade10)@Html.Raw(gradeCaption(10))</label>
+					<label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m => m.TaughtInCalculusGrade11)@Html.Raw(gradeCaption(11))</label>
+					<label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m => m.TaughtInCalculusGrade12)@Html.Raw(gradeCaption(12))</label>
+					<label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m => m.TaughtInCalculusCollege)@Html.Raw(gradeCaption(13))</label>
+				</div>
+
+				<div class="form-group row secondary-question">
+					<label asp-for="TaughtFactoringInOtherYears">Other (# of years):<input class="form-control" asp-for="TaughtFactoringInOtherYears" /></label>
+					<label class="nobold" asp-for="TaughtFactoringInOtherSpecified">Specify:<input class="form-control" asp-for="TaughtFactoringInOtherSpecified" /></label>
+					<label class="@allColumns">Specify grades:</label>
+					<label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m => m.TaughtInOtherGrade6)@Html.Raw(gradeCaption(6))</label>
+					<label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m => m.TaughtInOtherGrade7)@Html.Raw(gradeCaption(7))</label>
+					<label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m => m.TaughtInOtherGrade8)@Html.Raw(gradeCaption(8))</label>
+					<label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m => m.TaughtInOtherGrade9)@Html.Raw(gradeCaption(9))</label>
+					<label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m => m.TaughtInOtherGrade10)@Html.Raw(gradeCaption(10))</label>
+					<label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m => m.TaughtInOtherGrade11)@Html.Raw(gradeCaption(11))</label>
+					<label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m => m.TaughtInOtherGrade12)@Html.Raw(gradeCaption(12))</label>
+					<label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m => m.TaughtInOtherCollege)@Html.Raw(gradeCaption(13))</label>
+
+				</div>
 
                 <div class="form-group row">
-                    <label asp-for="TaughtFactoringInPrecalculusYears">Pre-Calculus (# of years):<input class="form-control" asp-for="TaughtFactoringInPrecalculusYears" /></label>
-                    <label class="@allColumns nobold">Specify grades:</label>
-                    <label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m=> m.TaughtInPrecalculusGrade6)@Html.Raw(gradeCaption(6))</label>
-                    <label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m=> m.TaughtInPrecalculusGrade7)@Html.Raw(gradeCaption(7))</label>
-                    <label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m=> m.TaughtInPrecalculusGrade8)@Html.Raw(gradeCaption(8))</label>
-                    <label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m=> m.TaughtInPrecalculusGrade9)@Html.Raw(gradeCaption(9))</label>
-                    <label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m=> m.TaughtInPrecalculusGrade10)@Html.Raw(gradeCaption(10))</label>
-                    <label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m=> m.TaughtInPrecalculusGrade11)@Html.Raw(gradeCaption(11))</label>
-                    <label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m=> m.TaughtInPrecalculusGrade12)@Html.Raw(gradeCaption(12))</label>
-                    <label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m=> m.TaughtInPrecalculusCollege)@Html.Raw(gradeCaption(13))</label>
-                </div>
+					<hr />
+					<label class="primary-question">13. In this school year, what math courses require you to teach factoring trinomials?</label>
+				</div>
 
-                <div class="form-group row">
-                    <label asp-for="TaughtFactoringInCalculusYears">Calculus (# of years):<input class="form-control" asp-for="TaughtFactoringInCalculusYears" /></label>
-                    <label class="@allColumns nobold">Specify grades:</label>
-                    <label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m=> m.TaughtInCalculusGrade6)@Html.Raw(gradeCaption(6))</label>
-                    <label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m=> m.TaughtInCalculusGrade7)@Html.Raw(gradeCaption(7))</label>
-                    <label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m=> m.TaughtInCalculusGrade8)@Html.Raw(gradeCaption(8))</label>
-                    <label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m=> m.TaughtInCalculusGrade9)@Html.Raw(gradeCaption(9))</label>
-                    <label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m=> m.TaughtInCalculusGrade10)@Html.Raw(gradeCaption(10))</label>
-                    <label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m=> m.TaughtInCalculusGrade11)@Html.Raw(gradeCaption(11))</label>
-                    <label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m=> m.TaughtInCalculusGrade12)@Html.Raw(gradeCaption(12))</label>
-                    <label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m=> m.TaughtInCalculusCollege)@Html.Raw(gradeCaption(13))</label>
-                </div>
-
-                <div class="form-group row">
-                    <label asp-for="TaughtFactoringInOtherYears">Other (# of years):<input class="form-control" asp-for="TaughtFactoringInOtherYears" /></label>
-                    <label class="nobold" asp-for="TaughtFactoringInOtherSpecified">Specify:<input class="form-control" asp-for="TaughtFactoringInOtherSpecified" /></label>
-                    <label class="@allColumns nobold">Specify grades:</label>
-                    <label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m=> m.TaughtInOtherGrade6)@Html.Raw(gradeCaption(6))</label>
-                    <label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m=> m.TaughtInOtherGrade7)@Html.Raw(gradeCaption(7))</label>
-                    <label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m=> m.TaughtInOtherGrade8)@Html.Raw(gradeCaption(8))</label>
-                    <label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m=> m.TaughtInOtherGrade9)@Html.Raw(gradeCaption(9))</label>
-                    <label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m=> m.TaughtInOtherGrade10)@Html.Raw(gradeCaption(10))</label>
-                    <label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m=> m.TaughtInOtherGrade11)@Html.Raw(gradeCaption(11))</label>
-                    <label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m=> m.TaughtInOtherGrade12)@Html.Raw(gradeCaption(12))</label>
-                    <label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m=> m.TaughtInOtherCollege)@Html.Raw(gradeCaption(13))</label>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- Question 13 -->
-        <div class="panel panel-primary container">
-            <div class="panel-heading text-left">
-                In this school year, what math courses require you to teach factoring trinomials?
-            </div>
-            <div class="panel-body">
-
-                <div class="form-group row">
+                <div class="form-group row secondary-question">
                     <label class="@allColumns">Algebra 1:</label>
                     <label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m=> m.TeachingNowInAlgebra1Grade6)@Html.Raw(gradeCaption(6))</label>
                     <label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m=> m.TeachingNowInAlgebra1Grade7)@Html.Raw(gradeCaption(7))</label>
@@ -322,7 +340,7 @@
                     <label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m=> m.TeachingNowInAlgebra1College)@Html.Raw(gradeCaption(13))</label>
                 </div>
 
-                <div class="form-group row">
+                <div class="form-group row secondary-question">
                     <label class="@allColumns">Algebra 2:</label>
                     <label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m=> m.TeachingNowInAlgebra2Grade6)@Html.Raw(gradeCaption(6))</label>
                     <label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m=> m.TeachingNowInAlgebra2Grade7)@Html.Raw(gradeCaption(7))</label>
@@ -334,7 +352,7 @@
                     <label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m=> m.TeachingNowInAlgebra2College)@Html.Raw(gradeCaption(13))</label>
                 </div>
 
-                <div class="form-group row">
+                <div class="form-group row secondary-question">
                     <label class="@allColumns">Pre-Calculus:</label>
                     <label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m=> m.TeachingNowInPrecalculusGrade6)@Html.Raw(gradeCaption(6))</label>
                     <label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m=> m.TeachingNowInPrecalculusGrade7)@Html.Raw(gradeCaption(7))</label>
@@ -346,7 +364,7 @@
                     <label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m=> m.TeachingNowInPrecalculusCollege)@Html.Raw(gradeCaption(13))</label>
                 </div>
 
-                <div class="form-group row">
+                <div class="form-group row secondary-question">
                     <label class="@allColumns">Calculus:</label>
                     <label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m=> m.TeachingNowInCalculusGrade6)@Html.Raw(gradeCaption(6))</label>
                     <label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m=> m.TeachingNowInCalculusGrade7)@Html.Raw(gradeCaption(7))</label>
@@ -358,7 +376,7 @@
                     <label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m=> m.TeachingNowInCalculusCollege)@Html.Raw(gradeCaption(13))</label>
                 </div>
 
-                <div class="form-group row">
+                <div class="form-group row secondary-question">
                     <label class="@allColumns"><label asp-for="TeachingNowInOtherSpecified">Other:<input class="form-control" asp-for="TeachingNowInOtherSpecified" /></label></label>
                     <label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m=> m.TeachingNowInOtherGrade6)@Html.Raw(gradeCaption(6))</label>
                     <label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m=> m.TeachingNowInOtherGrade7)@Html.Raw(gradeCaption(7))</label>
@@ -369,17 +387,14 @@
                     <label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m=> m.TeachingNowInOtherGrade12)@Html.Raw(gradeCaption(12))</label>
                     <label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m=> m.TeachingNowInOtherCollege)@Html.Raw(gradeCaption(13))</label>
                 </div>
-            </div>
-        </div>
 
-        <!-- Question 14 -->
-        <div class="panel panel-primary container">
-            <div class="panel-heading text-left">
-                What methods of factoring do you introduce to your students?
-            </div>
-            <div class="panel-body">
+                <div class="form-group row">
+					<hr />
+					<label class="primary-question">14. What methods of factoring do you introduce to your students?</label>
+				</div>
+                
 
-                <div class="form-group">
+                <div class="form-group row secondary-question">
                     <label>Check all that apply:</label>
                     <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.UsedMethodDiff2Squares)Difference of two squares</label></div>
                     <div class="checkbox"><label>@Html.CheckBoxFor(m=> m.UsedMethodQuadraticFormula)Quadratic formula</label></div>

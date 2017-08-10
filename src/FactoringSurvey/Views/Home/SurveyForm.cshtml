@@ -111,6 +111,9 @@
         .nobold {
             font-weight:normal;
         }
+		input.form-control {
+            font-weight:normal;
+		}
 
     </style>
 
@@ -152,21 +155,14 @@
 
                 <div class="form-group row">
                     <label class="@gridClassAllColumns" asp-for="Gender">Your gender:</label>
-                    @foreach (var opt in EnumOptions.Genders)
-                    {
-                        <label class="radio-inline col-lg-1 col-md-2 col-sm-12 col-xs-12">
-                            <input asp-for="Gender" type="radio" name="Gender" value="@opt.Value">@opt.Description
-                        </label>
-                    }
+                    @foreach (var opt in EnumOptions.Genders){
+                        <label class="radio-inline col-lg-1 col-md-2 col-sm-12 col-xs-12">@Html.RadioButtonFor(m=>m.Gender, @opt.Value)@opt.Description</label>}
                 </div>
 
                 <div class="form-group row">
                     <label class="@gridClassAllColumns" asp-for="Age">Your age:</label>
-                    @foreach (var opt in EnumOptions.Ages)
-                    {
-                        <label class="radio-inline col-lg-1 col-md-2 col-sm-12 col-xs-12">
-                            <input asp-for="Age" type="radio" name="Age" value="@opt.Value">@opt.Description
-                        </label>}
+                    @foreach (var opt in EnumOptions.Ages){
+                        <label class="radio-inline col-lg-1 col-md-2 col-sm-12 col-xs-12">@Html.RadioButtonFor(m=>m.Age, @opt.Value)@opt.Description</label>}
                 </div>
 
                 <div class="form-group">
@@ -234,7 +230,7 @@
 
                 <!-- Question 12 -->
                 <div class="form-group row">
-                    <label class="checkbox @gridClassAllColumns"><input type="checkbox" asp-for="NotTaughtTrinomials">No, I have not taught factoring trinomials before</label>
+                    <label class="checkbox @gridClassAllColumns">@Html.CheckBoxFor(m=> m.NotTaughtTrinomials)No, I have not taught factoring trinomials before</label>
                     <label class="@gridClassAllColumns nobold">If yes, put numbers of years next to courses below and corresponding grade levels.</label>
                 </div>
                 <div class="form-group row">
@@ -463,7 +459,7 @@
                 }
 
                 <div class="form-group row">
-                    <div class="checkbox @allRow"><label><input type="checkbox" asp-for="GraphsNotUsed">No, I do not</label></div>
+                    <div class="checkbox @allRow"><label>@Html.CheckBoxFor(m=> m.GraphsNotUsed)No, I do not</label></div>
                     <label class="@allRow">If yes, check all that apply:</label>
                     <div class="checkbox @allRow"><label>@Html.CheckBoxFor(m=> m.GraphsCheckSolutions)To check if the equation has no solutions, one solution or two solutions</label></div>
                     <div class="checkbox @allRow"><label>@Html.CheckBoxFor(m=> m.GraphsCheckWork)To check their work</label></div>

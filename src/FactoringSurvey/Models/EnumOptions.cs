@@ -41,7 +41,6 @@ namespace FactoringSurvey.Models
 			{
 				return new[]
 				{
-					new EnumOption(Unspecified, "Unspecified"),
 					new EnumOption(GenderFemale, "Female"),
 					new EnumOption(GenderMale, "Male")
 				};
@@ -53,7 +52,6 @@ namespace FactoringSurvey.Models
 			{
 				return new[]
 				{
-					new EnumOption(Unspecified, "Unspecified"),
 					new EnumOption(AgeTwenties, "20-29"),
 					new EnumOption(AgeThirties, "30-39"),
 					new EnumOption(AgeFourties, "40-49"),

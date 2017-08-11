@@ -315,5 +315,10 @@ namespace FactoringSurvey.Models
 		public int GoalToOther								{ get; set; } = 3;
 		[MaxLength(120)]
 		public string GoalToOtherSpecified					{ get; set; }
+
+		[MaxLength(240)]
+		public string  WhatCanTheyDoBetterWithTechnology	{ get; set; }
+		[MaxLength(240)]
+		public string  WhatCanTheyNotDoBetterWithTechnology	{ get; set; }
 	}
 }

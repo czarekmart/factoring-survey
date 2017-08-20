@@ -256,85 +256,10 @@
 			</div>
 			<div class="panel-body">
 
-                <div class="form-group row">
-					<label class="primary-question">12. How many years have you taught trinomials?</label>
-				</div>
-
-				<div class="form-group row secondary-question">
-					<div class="checkbox"><label>@Html.CheckBoxFor(m => m.NotTaughtTrinomials)No, I have not taught factoring trinomials before</label></div>
-					<label class="@gridClassAllColumns nobold">If yes, put numbers of years next to courses below and corresponding grade levels:</label>
-				</div>
-				<div class="form-group row secondary-question">
-					<label asp-for="TaughtFactoringInAlgebra1Years">Algebra 1 (# of years):<input class="form-control" asp-for="TaughtFactoringInAlgebra1Years" /></label>
-					<label class="@allColumns">Specify grades:</label>
-
-					<label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m => m.TaughtInAlgebra1Grade6)@Html.Raw(gradeCaption(6))</label>
-					<label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m => m.TaughtInAlgebra1Grade7)@Html.Raw(gradeCaption(7))</label>
-					<label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m => m.TaughtInAlgebra1Grade8)@Html.Raw(gradeCaption(8))</label>
-					<label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m => m.TaughtInAlgebra1Grade9)@Html.Raw(gradeCaption(9))</label>
-					<label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m => m.TaughtInAlgebra1Grade10)@Html.Raw(gradeCaption(10))</label>
-					<label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m => m.TaughtInAlgebra1Grade11)@Html.Raw(gradeCaption(11))</label>
-					<label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m => m.TaughtInAlgebra1Grade12)@Html.Raw(gradeCaption(12))</label>
-					<label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m => m.TaughtInAlgebra1College)@Html.Raw(gradeCaption(13))</label>
-				</div>
-
-				<div class="form-group row secondary-question">
-					<label asp-for="TaughtFactoringInAlgebra2Years">Algebra 2 (# of years):<input class="form-control" asp-for="TaughtFactoringInAlgebra2Years" /></label>
-					<label class="@allColumns">Specify grades:</label>
-					<label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m => m.TaughtInAlgebra2Grade6)@Html.Raw(gradeCaption(6))</label>
-					<label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m => m.TaughtInAlgebra2Grade7)@Html.Raw(gradeCaption(7))</label>
-					<label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m => m.TaughtInAlgebra2Grade8)@Html.Raw(gradeCaption(8))</label>
-					<label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m => m.TaughtInAlgebra2Grade9)@Html.Raw(gradeCaption(9))</label>
-					<label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m => m.TaughtInAlgebra2Grade10)@Html.Raw(gradeCaption(10))</label>
-					<label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m => m.TaughtInAlgebra2Grade11)@Html.Raw(gradeCaption(11))</label>
-					<label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m => m.TaughtInAlgebra2Grade12)@Html.Raw(gradeCaption(12))</label>
-					<label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m => m.TaughtInAlgebra2College)@Html.Raw(gradeCaption(13))</label>
-				</div>
-
-				<div class="form-group row secondary-question">
-					<label asp-for="TaughtFactoringInPrecalculusYears">Pre-Calculus (# of years):<input class="form-control" asp-for="TaughtFactoringInPrecalculusYears" /></label>
-					<label class="@allColumns">Specify grades:</label>
-					<label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m => m.TaughtInPrecalculusGrade6)@Html.Raw(gradeCaption(6))</label>
-					<label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m => m.TaughtInPrecalculusGrade7)@Html.Raw(gradeCaption(7))</label>
-					<label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m => m.TaughtInPrecalculusGrade8)@Html.Raw(gradeCaption(8))</label>
-					<label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m => m.TaughtInPrecalculusGrade9)@Html.Raw(gradeCaption(9))</label>
-					<label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m => m.TaughtInPrecalculusGrade10)@Html.Raw(gradeCaption(10))</label>
-					<label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m => m.TaughtInPrecalculusGrade11)@Html.Raw(gradeCaption(11))</label>
-					<label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m => m.TaughtInPrecalculusGrade12)@Html.Raw(gradeCaption(12))</label>
-					<label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m => m.TaughtInPrecalculusCollege)@Html.Raw(gradeCaption(13))</label>
-				</div>
-
-				<div class="form-group row secondary-question">
-					<label asp-for="TaughtFactoringInCalculusYears">Calculus (# of years):<input class="form-control" asp-for="TaughtFactoringInCalculusYears" /></label>
-					<label class="@allColumns">Specify grades:</label>
-					<label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m => m.TaughtInCalculusGrade6)@Html.Raw(gradeCaption(6))</label>
-					<label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m => m.TaughtInCalculusGrade7)@Html.Raw(gradeCaption(7))</label>
-					<label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m => m.TaughtInCalculusGrade8)@Html.Raw(gradeCaption(8))</label>
-					<label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m => m.TaughtInCalculusGrade9)@Html.Raw(gradeCaption(9))</label>
-					<label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m => m.TaughtInCalculusGrade10)@Html.Raw(gradeCaption(10))</label>
-					<label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m => m.TaughtInCalculusGrade11)@Html.Raw(gradeCaption(11))</label>
-					<label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m => m.TaughtInCalculusGrade12)@Html.Raw(gradeCaption(12))</label>
-					<label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m => m.TaughtInCalculusCollege)@Html.Raw(gradeCaption(13))</label>
-				</div>
-
-				<div class="form-group row secondary-question">
-					<label asp-for="TaughtFactoringInOtherYears">Other (# of years):<input class="form-control" asp-for="TaughtFactoringInOtherYears" /></label>
-					<label class="nobold" asp-for="TaughtFactoringInOtherSpecified">Specify:<input class="form-control" asp-for="TaughtFactoringInOtherSpecified" /></label>
-					<label class="@allColumns">Specify grades:</label>
-					<label class="checkbox-inline @colByGrade(6)">  @Html.CheckBoxFor(m => m.TaughtInOtherGrade6)@Html.Raw(gradeCaption(6))</label>
-					<label class="checkbox-inline @colByGrade(7)">  @Html.CheckBoxFor(m => m.TaughtInOtherGrade7)@Html.Raw(gradeCaption(7))</label>
-					<label class="checkbox-inline @colByGrade(8)">  @Html.CheckBoxFor(m => m.TaughtInOtherGrade8)@Html.Raw(gradeCaption(8))</label>
-					<label class="checkbox-inline @colByGrade(9)">  @Html.CheckBoxFor(m => m.TaughtInOtherGrade9)@Html.Raw(gradeCaption(9))</label>
-					<label class="checkbox-inline @colByGrade(10)"> @Html.CheckBoxFor(m => m.TaughtInOtherGrade10)@Html.Raw(gradeCaption(10))</label>
-					<label class="checkbox-inline @colByGrade(11)"> @Html.CheckBoxFor(m => m.TaughtInOtherGrade11)@Html.Raw(gradeCaption(11))</label>
-					<label class="checkbox-inline @colByGrade(12)"> @Html.CheckBoxFor(m => m.TaughtInOtherGrade12)@Html.Raw(gradeCaption(12))</label>
-					<label class="checkbox-inline @colByGrade(13)"> @Html.CheckBoxFor(m => m.TaughtInOtherCollege)@Html.Raw(gradeCaption(13))</label>
-
-				</div>
 
                 <div class="form-group row">
 					<hr />
-					<label class="primary-question">13. In this school year, what math courses require you to teach factoring trinomials?</label>
+					<label class="primary-question">12. In this school year, what math courses require you to teach factoring trinomials?</label>
 				</div>
 
                 <div class="form-group row secondary-question">
@@ -399,7 +324,7 @@
 
                 <div class="form-group row">
 					<hr />
-					<label class="primary-question">14. What methods of factoring do you introduce to your students?</label>
+					<label class="primary-question">13. What methods of factoring do you introduce to your students?</label>
 				</div>
 
                 <div class="form-group row secondary-question">
@@ -417,7 +342,7 @@
 
                 <div class="form-group row">
 					<hr />
-					<label class="primary-question">15. Based on your experience, knowledge and beliefs, please evaluate each method of factoring polynomials</label>
+					<label class="primary-question">14. Based on your experience, knowledge and beliefs, please evaluate each method of factoring polynomials</label>
 				</div>
 
                 <div class="form-group row secondary-question">
@@ -464,7 +389,7 @@
 
                 <div class="form-group row">
 					<hr />
-					<label class="primary-question">16. Do you relate graphs of parabolas when teaching factoring of quadratic equations?</label>
+					<label class="primary-question">15. Do you relate graphs of parabolas when teaching factoring of quadratic equations?</label>
 				</div>
 
                 @{
@@ -486,7 +411,7 @@
 
                 <div class="form-group row">
 					<hr />
-					<label class="primary-question" asp-for="MostChallengingPart">17. What do you think is the most challenging part of factoring trinomials for students to understand:</label>
+					<label class="primary-question" asp-for="MostChallengingPart">16. What do you think is the most challenging part of factoring trinomials for students to understand:</label>
 					<div class="secondary-question">
 						<textarea class="form-control" rows="2" asp-for="MostChallengingPart" placeholder="Max 240 characters"></textarea>
 					</div>
@@ -494,7 +419,7 @@
 
                 <div class="form-group row">
 					<hr />
-					<label class="primary-question" asp-for="WhatToAddToCurriculum">18. What would you ADD to curriculum to make students more successful in factoring trinomials:</label>
+					<label class="primary-question" asp-for="WhatToAddToCurriculum">17. What would you ADD to curriculum to make students more successful in factoring trinomials:</label>
 					<div class="secondary-question">
 						<textarea class="form-control" rows="2" asp-for="WhatToAddToCurriculum" placeholder="Max 240 characters"></textarea>
 					</div>
@@ -502,7 +427,7 @@
 
                 <div class="form-group row">
 					<hr />
-					<label class="primary-question" asp-for="WhatToRemoveFromCurriculum">19. What would you REMOVE from algebra curriculum to make students more successful in mathematics:</label>
+					<label class="primary-question" asp-for="WhatToRemoveFromCurriculum">18. What would you REMOVE from algebra curriculum to make students more successful in mathematics:</label>
 					<div class="secondary-question">
 						<textarea class="form-control" rows="2" asp-for="WhatToRemoveFromCurriculum" placeholder="Max 240 characters"></textarea>
 					</div>
@@ -510,7 +435,7 @@
 
                 <div class="form-group row">
 					<hr />
-					<label class="primary-question" asp-for="WhatIsSuccessfulTeaching">20. How do you define "successful" teaching:</label>
+					<label class="primary-question" asp-for="WhatIsSuccessfulTeaching">19. How do you define "successful" teaching:</label>
 					<div class="secondary-question">
 						<textarea class="form-control" rows="2" asp-for="WhatIsSuccessfulTeaching" placeholder="Max 240 characters"></textarea>
 					</div>
@@ -518,7 +443,7 @@
 
                 <div class="form-group row">
 					<hr />
-					<label class="@gridClassAllColumns primary-question" asp-for="TeachingSuccess">21. Based on your definition of a success in teaching mathematics, you are successful in teaching factorial trinomials:</label>
+					<label class="@gridClassAllColumns primary-question" asp-for="TeachingSuccess">20. Based on your definition of a success in teaching mathematics, you are successful in teaching factorial trinomials:</label>
 					<div class="tertiary-question row">
 						@for (var scale = 5; scale >= 1; scale--){
 							<label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.TeachingSuccess, @scale)@agreeScaleCaption(scale)</label>}
@@ -537,7 +462,7 @@
 
                 <div class="form-group row">
 					<hr />
-					<label class="@gridClassAllColumns primary-question" asp-for="ConfidentWithTechnology">22. You are familiar and confident with using technology in the classroom:</label>
+					<label class="@gridClassAllColumns primary-question" asp-for="ConfidentWithTechnology">21. You are familiar and confident with using technology in the classroom:</label>
 					<div class="tertiary-question row">
 						@for (var scale = 5; scale >= 1; scale--){
 							<label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.ConfidentWithTechnology, @scale)@agreeScaleCaption(scale)</label>}
@@ -546,7 +471,7 @@
 
                 <div class="form-group row">
 					<hr />
-					<label class="@gridClassAllColumns primary-question" asp-for="CanTechnologyBeMoreEffective">23. Technology can make teaching factorial trinomials more effective to teach/learn:</label>
+					<label class="@gridClassAllColumns primary-question" asp-for="CanTechnologyBeMoreEffective">22. Technology can make teaching factorial trinomials more effective to teach/learn:</label>
 					<div class="tertiary-question row">
 						@for (var scale = 5; scale >= 1; scale--){
 							<label class="radio-inline @scalingRadio">@Html.RadioButtonFor(m=>m.CanTechnologyBeMoreEffective, @scale)@agreeScaleCaption(scale)</label>}
@@ -562,7 +487,7 @@
 
                 <div class="form-group row">
 					<hr />
-					<label class="primary-question">24. You have access to the following technology:</label>
+					<label class="primary-question">23. Do you have access to the following technology?</label>
 				</div>
 
                 <div class="form-group row secondary-question">
@@ -644,7 +569,7 @@
 
                 <div class="form-group row">
 					<hr />
-					<label class="primary-question">25. You incorporate the following technology to teach factoring trinomials:</label>
+					<label class="primary-question">24. Do you incorporate the following technology to teach factoring trinomials?</label>
 				</div>
 
                 <div class="form-group row secondary-question">
@@ -726,7 +651,7 @@
 
                 <div class="form-group row">
 					<hr />
-					<label class="primary-question">26. You use technology to teach the following methods:</label>
+					<label class="primary-question">25. Do you use technology to teach the following methods?</label>
 				</div>
 
                 <div class="form-group row secondary-question">
@@ -773,7 +698,7 @@
 
                 <div class="form-group row">
 					<hr />
-					<label class="primary-question">27. Your goal of incorporating technology to teach factoring trinomials is:</label>
+					<label class="primary-question">26. Your goal of incorporating technology to teach factoring trinomials is:</label>
 				</div>
 
                 <div class="form-group row secondary-question">
@@ -850,7 +775,7 @@
 
                 <div class="form-group row">
 					<hr />
-					<label class="primary-question" asp-for="WhatCanTheyDoBetterWithTechnology">28. What, if anything, can your students do better as the result of their access to the technology, that would be very difficult or impossible otherwise:</label>
+					<label class="primary-question" asp-for="WhatCanTheyDoBetterWithTechnology">27. What, if anything, can your students do better as the result of their access to the technology, that would be very difficult or impossible otherwise:</label>
 					<div class="secondary-question">
 						<textarea class="form-control" rows="2" asp-for="WhatCanTheyDoBetterWithTechnology" placeholder="Max 240 characters"></textarea>
 					</div>
@@ -858,9 +783,17 @@
 
                 <div class="form-group row">
 					<hr />
-					<label class="primary-question" asp-for="WhatCanTheyNotDoBetterWithTechnology">29. What, if anything, the technology cannot bring any advantage to:</label>
+					<label class="primary-question" asp-for="WhatCanTheyNotDoBetterWithTechnology">28. What, if anything, the technology cannot help:</label>
 					<div class="secondary-question">
 						<textarea class="form-control" rows="2" asp-for="WhatCanTheyNotDoBetterWithTechnology" placeholder="Max 240 characters"></textarea>
+					</div>
+ 				</div>
+
+                <div class="form-group row">
+					<hr />
+					<label class="primary-question" asp-for="AdditionalComment">29. Your additional comments:</label>
+					<div class="secondary-question">
+						<textarea class="form-control" rows="2" asp-for="AdditionalComment" placeholder="Max 240 characters"></textarea>
 					</div>
  				</div>
 

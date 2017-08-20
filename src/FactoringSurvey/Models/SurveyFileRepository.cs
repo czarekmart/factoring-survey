@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using MimeKit;
+using FactoringSurvey.Helpers;
 
 namespace FactoringSurvey.Models
 {
@@ -58,9 +59,17 @@ namespace FactoringSurvey.Models
 				}
 
 				// Send notification email
-				var confirmationEmail = _configuration["Confirmation:Email"];
-				if(!string.IsNullOrEmpty(confirmationEmail))
-					Helpers.Email.SendEmail(confirmationEmail, "Survey response from " + response.Name, json);
+				//var confirmationEmail = _configuration["Confirmation:Email"];
+				//if(!string.IsNullOrEmpty(confirmationEmail))
+				{
+					Helpers.Email.SendEmail( new[]
+						{
+							new EmailRecipient { Name = "Gosia Mart", EmailAddress = "gosiamart@icloud.com" },
+							new EmailRecipient { Name = "Cezar Mart", EmailAddress = "czarekmart@me.com" }
+						}, 
+						"Survey response from " + response.Name, 
+						json);
+				}
 			}
 		}
 

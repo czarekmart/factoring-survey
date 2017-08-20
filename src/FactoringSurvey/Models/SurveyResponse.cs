@@ -320,5 +320,7 @@ namespace FactoringSurvey.Models
 		public string  WhatCanTheyDoBetterWithTechnology	{ get; set; }
 		[MaxLength(240)]
 		public string  WhatCanTheyNotDoBetterWithTechnology	{ get; set; }
+		[MaxLength(240)]
+		public string  AdditionalComment					{ get; set; }
 	}
 }

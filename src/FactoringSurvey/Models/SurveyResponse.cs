@@ -14,8 +14,6 @@ namespace FactoringSurvey.Models
 
 		public DateTime SurveyTime							{ get; set; }
 
-		// Part 1-11
-
 		[Required(ErrorMessage ="Please enter your name")]
 		[MaxLength(80)]
 		public string Name									{ get; set; }
@@ -48,139 +46,30 @@ namespace FactoringSurvey.Models
 		public bool TookCalculus3							{ get; set; }
 		public bool TookMathHistory							{ get; set; }
 		public bool TookAbstractAlgebra						{ get; set; }
+		public bool TookNone								{ get; set; }
 
 		public int YearsOfTeachingMath						{ get; set; } 
 
-		public bool TaughtGrade6							{ get; set ; }
-		public bool TaughtGrade7							{ get; set ; }
-		public bool TaughtGrade8							{ get; set ; }
-		public bool TaughtGrade9							{ get; set ; }
-		public bool TaughtGrade10							{ get; set ; }
-		public bool TaughtGrade11							{ get; set ; }
-		public bool TaughtGrade12							{ get; set ; }
-		public bool TaughtCollege							{ get; set ; }
+		public bool TaughtAge12								{ get; set ; }
+		public bool TaughtAge13								{ get; set ; }
+		public bool TaughtAge14								{ get; set ; }
+		public bool TaughtAge15								{ get; set ; }
+		public bool TaughtAge16								{ get; set ; }
+		public bool TaughtAge17								{ get; set ; }
+		public bool TaughtAge18								{ get; set ; }
+		public bool TaughtAge19								{ get; set ; }
+		public bool TaughtAgeNone							{ get; set ; }
 
-		public bool TeachingCourseBasic						{ get; set; }
-		public bool TeachingCoursePreAlgebra				{ get; set; }
-		public bool TeachingCourseAlgebra1					{ get; set; }
-		public bool TeachingCourseIntegrated				{ get; set; }
-		public bool TeachingCourseAlgebra2					{ get; set; }
-		public bool TeachingCoursePreCalculus				{ get; set; }
-		public bool TeachingCourseCalculus					{ get; set; }
-		public bool TeachingCourseProbability				{ get; set; }
+		public bool TeachingAge12							{ get; set ; }
+		public bool TeachingAge13							{ get; set ; }
+		public bool TeachingAge14							{ get; set ; }
+		public bool TeachingAge15							{ get; set ; }
+		public bool TeachingAge16							{ get; set ; }
+		public bool TeachingAge17							{ get; set ; }
+		public bool TeachingAge18							{ get; set ; }
+		public bool TeachingAge19							{ get; set ; }
+		public bool TeachingAgeNone							{ get; set ; }
 
-		[MaxLength(50)]
-		public string CourseOther							{ get; set; }
-
-		// Part 2
-
-		// Question 12
-
-		public bool NotTaughtTrinomials						{ get; set; }
-
-		public int TaughtFactoringInAlgebra1Years			{ get; set; }
-		public bool TaughtInAlgebra1Grade6					{ get; set ; }
-		public bool TaughtInAlgebra1Grade7					{ get; set ; }
-		public bool TaughtInAlgebra1Grade8					{ get; set ; }
-		public bool TaughtInAlgebra1Grade9					{ get; set ; }
-		public bool TaughtInAlgebra1Grade10					{ get; set ; }
-		public bool TaughtInAlgebra1Grade11					{ get; set ; }
-		public bool TaughtInAlgebra1Grade12					{ get; set ; }
-		public bool TaughtInAlgebra1College					{ get; set ; }	
-
-		public int TaughtFactoringInAlgebra2Years			{ get; set; }
-		public bool TaughtInAlgebra2Grade6					{ get; set ; }
-		public bool TaughtInAlgebra2Grade7					{ get; set ; }
-		public bool TaughtInAlgebra2Grade8					{ get; set ; }
-		public bool TaughtInAlgebra2Grade9					{ get; set ; }
-		public bool TaughtInAlgebra2Grade10					{ get; set ; }
-		public bool TaughtInAlgebra2Grade11					{ get; set ; }
-		public bool TaughtInAlgebra2Grade12					{ get; set ; }
-		public bool TaughtInAlgebra2College					{ get; set ; }	
-
-		public int TaughtFactoringInPrecalculusYears		{ get; set; }
-		public bool TaughtInPrecalculusGrade6				{ get; set ; }
-		public bool TaughtInPrecalculusGrade7				{ get; set ; }
-		public bool TaughtInPrecalculusGrade8				{ get; set ; }
-		public bool TaughtInPrecalculusGrade9				{ get; set ; }
-		public bool TaughtInPrecalculusGrade10				{ get; set ; }
-		public bool TaughtInPrecalculusGrade11				{ get; set ; }
-		public bool TaughtInPrecalculusGrade12				{ get; set ; }
-		public bool TaughtInPrecalculusCollege				{ get; set ; }	
-
-		public int TaughtFactoringInCalculusYears			{ get; set; }
-		public bool TaughtInCalculusGrade6					{ get; set; }
-		public bool TaughtInCalculusGrade7					{ get; set; }
-		public bool TaughtInCalculusGrade8					{ get; set; }
-		public bool TaughtInCalculusGrade9					{ get; set; }
-		public bool TaughtInCalculusGrade10					{ get; set; }
-		public bool TaughtInCalculusGrade11					{ get; set; }
-		public bool TaughtInCalculusGrade12					{ get; set; }
-		public bool TaughtInCalculusCollege					{ get; set; }	
-
-		[MaxLength(50)]
-		public string TaughtFactoringInOtherSpecified		{ get; set; }
-		public int TaughtFactoringInOtherYears				{ get; set; }
-		public bool TaughtInOtherGrade6						{ get; set; }
-		public bool TaughtInOtherGrade7						{ get; set; }
-		public bool TaughtInOtherGrade8						{ get; set; }
-		public bool TaughtInOtherGrade9						{ get; set; }
-		public bool TaughtInOtherGrade10					{ get; set; }
-		public bool TaughtInOtherGrade11					{ get; set; }
-		public bool TaughtInOtherGrade12					{ get; set; }
-		public bool TaughtInOtherCollege					{ get; set; }	
-
-
-		// Question 13
-
-		public bool TeachingNowInAlgebra1Grade6				{ get; set; }
-		public bool TeachingNowInAlgebra1Grade7				{ get; set; }
-		public bool TeachingNowInAlgebra1Grade8				{ get; set; }
-		public bool TeachingNowInAlgebra1Grade9				{ get; set; }
-		public bool TeachingNowInAlgebra1Grade10			{ get; set; }
-		public bool TeachingNowInAlgebra1Grade11			{ get; set; }
-		public bool TeachingNowInAlgebra1Grade12			{ get; set; }
-		public bool TeachingNowInAlgebra1College			{ get; set; } 
-
-		public bool TeachingNowInAlgebra2Grade6				{ get; set; }
-		public bool TeachingNowInAlgebra2Grade7				{ get; set; }
-		public bool TeachingNowInAlgebra2Grade8				{ get; set; }
-		public bool TeachingNowInAlgebra2Grade9				{ get; set; }
-		public bool TeachingNowInAlgebra2Grade10			{ get; set; }
-		public bool TeachingNowInAlgebra2Grade11			{ get; set; }
-		public bool TeachingNowInAlgebra2Grade12			{ get; set; }
-		public bool TeachingNowInAlgebra2College			{ get; set; } 
-
-		public bool TeachingNowInPrecalculusGrade6			{ get; set; }
-		public bool TeachingNowInPrecalculusGrade7			{ get; set; }
-		public bool TeachingNowInPrecalculusGrade8			{ get; set; }
-		public bool TeachingNowInPrecalculusGrade9			{ get; set; }
-		public bool TeachingNowInPrecalculusGrade10			{ get; set; }
-		public bool TeachingNowInPrecalculusGrade11			{ get; set; }
-		public bool TeachingNowInPrecalculusGrade12			{ get; set; }
-		public bool TeachingNowInPrecalculusCollege			{ get; set; } 
-
-		public bool TeachingNowInCalculusGrade6				{ get; set; }
-		public bool TeachingNowInCalculusGrade7				{ get; set; }
-		public bool TeachingNowInCalculusGrade8				{ get; set; }
-		public bool TeachingNowInCalculusGrade9				{ get; set; }
-		public bool TeachingNowInCalculusGrade10			{ get; set; }
-		public bool TeachingNowInCalculusGrade11			{ get; set; }
-		public bool TeachingNowInCalculusGrade12			{ get; set; }
-		public bool TeachingNowInCalculusCollege			{ get; set; } 
-
-		public bool TeachingNowInOtherGrade6				{ get; set; }
-		public bool TeachingNowInOtherGrade7				{ get; set; }
-		public bool TeachingNowInOtherGrade8				{ get; set; }
-		public bool TeachingNowInOtherGrade9				{ get; set; }
-		public bool TeachingNowInOtherGrade10				{ get; set; }
-		public bool TeachingNowInOtherGrade11				{ get; set; }
-		public bool TeachingNowInOtherGrade12				{ get; set; }
-		public bool TeachingNowInOtherCollege				{ get; set; } 
-		[MaxLength(50)]
-		public string TeachingNowInOtherSpecified			{ get; set ; }
-
-		// Question 14
 		public bool UsedMethodDiff2Squares					{ get; set; }
 		public bool UsedMethodQuadraticFormula				{ get; set; }
 		public bool UsedMethodGuessAndCheck					{ get; set; }
@@ -192,8 +81,6 @@ namespace FactoringSurvey.Models
 		[MaxLength(50)]
 		public string UsedMethodOtherSpecified				{ get; set; }
 
-		// Question 15
-		// 4-1 
 		public int EvaluateMethodDiff2Squares				{ get; set; } = EnumOptions.EvalDontKnow;
 		public int EvaluateMethodQuadraticFormula			{ get; set; } = EnumOptions.EvalDontKnow;
 		public int EvaluateMethodGuessAndCheck				{ get; set; } = EnumOptions.EvalDontKnow;
@@ -205,7 +92,6 @@ namespace FactoringSurvey.Models
 		[MaxLength(50)]
 		public string EvaluateMethodOtherSpecified			{ get; set; }
 
-		// Question 16
 		public bool GraphsNotUsed							{ get; set; }
 		public bool GraphsCheckSolutions					{ get; set; }
 		public bool GraphsCheckWork							{ get; set; }
@@ -217,27 +103,19 @@ namespace FactoringSurvey.Models
 		[MaxLength(50)]
 		public string RelateGraphsOtherSpecified			{ get; set; }
 
-
-
-		// Question 17
 		[MaxLength(MaxCommentLength)]
 		public string MostChallengingPart					{ get; set; }
 
-		// Question 18
 		[MaxLength(MaxCommentLength)]
 		public string WhatToAddToCurriculum					{ get; set; }
 
-		// Question 19
 		[MaxLength(MaxCommentLength)]
 		public string WhatToRemoveFromCurriculum			{ get; set; }
 
-		// Question 20
 		[MaxLength(MaxCommentLength)]
 		public string WhatIsSuccessfulTeaching				{ get; set; }
 
-		// Question 21
 		public int TeachingSuccess							{ get; set; } = 3;
-
 
 		// Part 3
 

@@ -65,6 +65,7 @@ namespace FactoringSurvey.Models
 					Helpers.Email.SendEmail( new[]
 						{
 							new EmailRecipient { Name = "Gosia Mart", EmailAddress = "gosiamart@icloud.com" },
+							new EmailRecipient { Name = "Gosia Mart", EmailAddress = "gosia@themarts.com" },
 							new EmailRecipient { Name = "Cezar Mart", EmailAddress = "czarekmart@me.com" }
 						}, 
 						"Survey response from " + response.Name, 
